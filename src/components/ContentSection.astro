@@ -1,0 +1,42 @@
+---
+interface Props {
+    title: string;
+    maintext: string;
+}
+
+const {title, maintext} = Astro.props;
+---
+
+<section class="content-section">
+    <h2 class="content-section-title">
+        {title.split('\n').map((line, i, arr) => (
+            <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
+        ))}
+    </h2>
+    <p class="content-section-main">
+        {maintext.split('\n').map((line, i, arr) => (
+            <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
+        ))}
+    </p>
+</section>
+
+<style>
+    .content-section {
+        background-color: var(--gray-white);
+        border-top: 1px solid var(--gray-divider);
+        border-bottom: 1px solid var(--gray-divider);
+        padding: 40px 70px;
+    }
+
+    .content-section-title {
+        font-size: var(--fs-heading-sm);
+        padding-bottom: 20px;
+    }
+
+    .content-section-main {
+        font-size: var(--fs-read);
+        line-height: 2;
+        color: var(--gray-main);
+    }
+
+</style>

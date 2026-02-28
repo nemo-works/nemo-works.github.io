@@ -1,0 +1,39 @@
+---
+interface Props {
+  subtitle: string;
+  title: string;
+}
+
+const { subtitle, title } = Astro.props;
+---
+
+<div class="section-header">
+  <p class="section-subtitle">{subtitle}</p>
+  <h2 class="section-title">{title}</h2>
+</div>
+
+<style>
+  .section-header {
+    background: var(--gray-white);
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+    padding: 40px 70px;
+  }
+
+  .section-subtitle {
+    font-size: var(--fs-sub);
+    font-weight: 500;
+    color: var(--gray-sub);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-en);
+    font-size: var(--fs-heading-lg);
+  }
+
+  @media (max-width: 768px) {
+    .section-header { padding: 32px 24px; }
+    .section-title { font-size: 32px; }
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import TagList from './TagList.astro';
+
+interface Props {
+  href: string | null;
+  thumbnail: { src: string; alt: string };
+  listTitle: string;
+  listDescription: string;
+  tags: string[];
+}
+
+const { href, thumbnail, listTitle, listDescription, tags } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag href={href ?? undefined} class="work-item">
+  <div class="work-thumbnail">
+    <img src={thumbnail.src} alt={thumbnail.alt} />
+  </div>
+  <div class="work-content">
+    <div class="work-text">
+      <h3 class="work-title">{listTitle}</h3>
+      <p class="work-description">
+        {listDescription.split('\n').map((line, i, arr) => (
+          <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
+        ))}
+      </p>
+      <TagList tags={tags} />
+    </div>
+    <span class="material-icons work-arrow">arrow_forward</span>
+  </div>
+</Tag>
+
+<style>
+  .work-item {
+    background: var(--gray-white);
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+    padding: 40px 70px;
+    display: flex;
+    gap: 40px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .work-item:hover {
+    border-top: 1px solid var(--primary-orange);
+    border-bottom: 1px solid var(--primary-orange);
+    background: var(--primary-opacity);
+  }
+
+  .work-item:hover .work-arrow {
+    color: var(--primary-orange);
+  }
+
+  .work-thumbnail {
+    width: 300px;
+    height: 157px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .work-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .work-content {
+    flex: 1;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .work-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .work-title {
+    font-size: var(--fs-heading-sm);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gray-main);
+  }
+
+  .work-description {
+    font-size: var(--fs-read);
+    line-height: 1.4;
+    color: var(--gray-sub);
+  }
+
+  .work-arrow {
+    font-size: 40px;
+    color: var(--gray-icon);
+    transition: color 0.3s ease;
+  }
+
+  @media (max-width: 1024px) {
+    .work-item { flex-direction: column; }
+    .work-thumbnail { width: 100%; max-width: 400px; }
+  }
+
+  @media (max-width: 768px) {
+    .work-item { padding: 24px; }
+    .work-thumbnail { height: 120px; }
+    .work-title { font-size: var(--fs-sub); }
+    .work-description { font-size: 16px; }
+  }
+</style>

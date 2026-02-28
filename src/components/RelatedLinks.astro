@@ -1,0 +1,75 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+---
+
+<section class="related-links">
+  <h2 class="related-links-title">関連リンク</h2>
+  <div class="links-list">
+    {links.map((link) => (
+      <a href={link.href} class="link-item" target="_blank" rel="noopener noreferrer">
+        <span class="material-icons">link</span>
+        <span class="link-text">{link.label}</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .related-links {
+    background: var(--gray-white);
+    padding: 40px 70px;
+    margin-bottom: 40px;
+  }
+
+  .related-links-title {
+    font-size: var(--fs-heading-sm);
+    margin-bottom: 20px;
+  }
+
+  .links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--blue);
+    transition: opacity 0.3s;
+  }
+
+  .link-item:hover {
+    opacity: 0.7;
+  }
+
+  .link-item .material-icons {
+    font-size: var(--fs-sub);
+  }
+
+  .link-text {
+    font-size: var(--fs-body);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .related-links {
+      padding: 24px;
+    }
+
+    .related-links-title {
+      font-size: var(--fs-sub);
+    }
+  }
+</style>

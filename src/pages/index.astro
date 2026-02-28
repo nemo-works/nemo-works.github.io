@@ -1,0 +1,484 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import PasswordOverlay from '../components/PasswordOverlay.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+---
+
+<BaseLayout title="Soma Nemoto Portfolio">
+    <!-- <PasswordOverlay /> -->
+
+    <!-- Header -->
+    <SiteHeader variant="menu" />
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">明快で、<br>わかりやすい<br>デザインを。</h1>
+                <p class="hero-name">Soma Nemoto</p>
+                <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられるデザイナーを志<br>しています。</p>
+            </div>
+            <div class="hero-image">
+                <img src="/img/index/top-icon.png" alt="Soma Nemoto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section -->
+    <section class="works-section">
+        <SectionHeader subtitle="取り組んできた仕事" title="WORKS" />
+        <div class="works-grid">
+            <WorkCard
+                href="/alkoo"
+                image="/img/index/Container/containts-01.png"
+                imageAlt="ALKOO by NAVITIME"
+                category="自社サービス運用/ウォーキングアプリ"
+                title="ALKOO by NAVITIME"
+            />
+            <WorkCard
+                href="/ekihai"
+                image="/img/index/Container/containts-02.png"
+                imageAlt="駅からハイキング"
+                category="クライアントワーク/サービス立ち上げ"
+                title="駅からハイキング"
+            />
+            <WorkCard
+                href="/alkoo_biz"
+                image="/img/index/Container/containts-03.png"
+                imageAlt="ALKOO 法人サービス"
+                category="クライアントワーク/サービス立ち上げ"
+                title="ALKOO 法人サービス"
+            />
+            <WorkCard
+                href="/sugotoku"
+                image="/img/index/Container/containts-04.png"
+                imageAlt="dバリューパス向けコンテンツ"
+                category="自社サービス運用/ナビゲーションサービス"
+                title="dバリューパス向けコンテンツ"
+            />
+            <WorkCard
+                href="#"
+                image="/img/index/Container/containts-05.png"
+                imageAlt="社内デザイン力の底上げ"
+                category="運用・改善"
+                title="社内デザイン力の底上げ"
+            />
+            <div class="work-placeholder"></div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-container">
+            <SectionHeader subtitle="私について" title="PROFILE" />
+
+            <div class="profile-main">
+                <div class="profile-photo">
+                    <img src="/img/index/profile.png" alt="根本 壮馬">
+                </div>
+                <div class="profile-content">
+                    <div class="profile-name">
+                        <span class="profile-name-jp">根本 壮馬</span>
+                        <span class="profile-name-en">Soma Nemoto</span>
+                    </div>
+                    <div class="profile-bio">
+                        東京工芸大学 デザイン学科に入学後、<br>
+                        インタラクションデザイン研究室にてUIデザイン・インタラクションデザインを学び、2019年に卒業。<br>
+                        <br>
+                        同年、株式会社ナビタイムジャパンに新卒として入社し、ウォーキングアプリ「ALKOObyNAVITIME」を中心にサービスのUIUXデザインを担当。
+                    </div>
+                    <div class="profile-links">
+                        <a href="#" class="profile-link">
+                            <span class="material-icons">link</span>
+                            <span class="profile-link-text">Web履歴書</span>
+                        </a>
+                        <a href="https://recruit.navitime.co.jp/interview/detail/interview10" class="profile-link" target="_blank">
+                            <span class="material-icons">link</span>
+                            <span class="profile-link-text">ナビタイムジャパン > 社員インタビュー</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-detail profile-detail--last">
+                <div class="profile-detail-label">趣味</div>
+                <div class="profile-detail-content">
+                    <div class="hobbies-list">
+                        <div class="hobby-item">
+                            <div class="hobby-icon hobby-icon--game"></div>
+                            <div class="hobby-content">
+                                <p class="hobby-title game">ゲーム</p>
+                                <p class="hobby-description">ラチェット&クランクとポケモンでゲーム好きが始まりました。</p>
+                            </div>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon hobby-icon--photo"></div>
+                            <div class="hobby-content">
+                                <p class="hobby-title photo">写真</p>
+                                <p class="hobby-description">Canon R8をメインに日常のスナップ写真の撮影を楽しんでいます。</p>
+                            </div>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon hobby-icon--running"></div>
+                            <div class="hobby-content">
+                                <p class="hobby-title running">ランニング</p>
+                                <p class="hobby-description">上司の猛烈な誘いを受けてランニングを始めました。今では自然遊歩道を走るトレイルランニングも楽しんでいます。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">©︎ 2025 Soma Nemoto</p>
+    </footer>
+</BaseLayout>
+
+<style>
+    /* Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 48px;
+        display: flex;
+        justify-content: flex-end;
+        z-index: 1000;
+        pointer-events: none;
+    }
+
+    .menu-button {
+        background: white;
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        pointer-events: all;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .menu-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .menu-button .material-icons {
+        font-size: 36px;
+        color: var(--gray-icon);
+    }
+
+    .menu-button span {
+        font-size: 12.5px;
+        color: var(--gray-icon);
+        margin-top: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+        background: var(--primary-orange);
+        min-height: 1080px;
+        padding: 80px 200px;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        padding: 23px;
+    }
+
+    .hero-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 24px;
+        color: white;
+    }
+
+    .hero-title {
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: 2.8px;
+    }
+
+    .hero-name {
+        font-family: var(--font-en);
+        font-size: 43.7px;
+        font-weight: 700;
+        line-height: 48px;
+    }
+
+    .hero-description {
+        font-size: var(--fs-sub);
+        line-height: 32px;
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .hero-image img {
+        width: 338.8px;
+        height: 338.8px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Works Section */
+    .works-section {
+        background: var(--gray-background);
+        padding: 80px 200px;
+    }
+
+    .works-grid {
+        background: var(--gray-white);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .work-placeholder {
+        grid-column: 3;
+        grid-row: 2;
+        background: var(--gray-white);
+        border: 1px solid var(--gray-divider);
+    }
+
+    /* Profile Section */
+    .profile-section {
+        background: var(--gray-background);
+        padding: 0 200px 80px;
+    }
+
+    .profile-container {
+        background: var(--gray-white);
+        border: 1px solid var(--gray-divider);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-main {
+        display: flex;
+        gap: 64px;
+        padding: 40px;
+        border-bottom: 1px solid var(--gray-divider);
+    }
+
+    .profile-photo {
+        width: 420px;
+        height: 420px;
+        border: 1px solid var(--gray-divider);
+        flex-shrink: 0;
+    }
+
+    .profile-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .profile-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .profile-name {
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+    }
+
+    .profile-name-jp {
+        font-size: 32px;
+        font-weight: 500;
+        color: var(--gray-main);
+    }
+
+    .profile-name-en {
+        font-family: var(--font-en);
+        font-size: 18.1px;
+        color: var(--gray-sub);
+        line-height: 32px;
+    }
+
+    .profile-bio {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--gray-main);
+    }
+
+    .profile-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .profile-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 3px 4px;
+        text-decoration: none;
+        color: var(--blue);
+    }
+
+    .profile-link:hover {
+        text-decoration: underline;
+    }
+
+    .profile-link .material-icons {
+        font-size: var(--fs-heading-sm);
+    }
+
+    .profile-link-text {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .profile-detail {
+        display: flex;
+        padding: 40px 70px;
+        border-top: 1px solid var(--gray-divider);
+    }
+
+    .profile-detail--last {
+        border-bottom: 1px solid var(--gray-divider);
+    }
+
+    .profile-detail-label {
+        width: 264.8px;
+        flex-shrink: 0;
+        font-size: 25.6px;
+        font-weight: 700;
+        line-height: 35.84px;
+        color: var(--gray-main);
+    }
+
+    .profile-detail-content {
+        flex: 1;
+        font-size: var(--fs-body);
+        line-height: 1.8;
+        color: var(--gray-main);
+    }
+
+    .hobbies-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hobby-item {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .hobby-icon {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        background: var(--gray-background);
+    }
+
+    .hobby-content { flex: 1; }
+
+    .hobby-title {
+        font-size: var(--fs-heading-sm);
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .hobby-title.game { color: #da825d; }
+    .hobby-title.photo { color: #3d74c5; }
+    .hobby-title.running { color: #27b936; }
+
+    .hobby-description {
+        font-size: var(--fs-body);
+        line-height: 1.8;
+        color: var(--gray-main);
+    }
+
+    /* Footer */
+    .footer {
+        background: var(--gray-main);
+        padding: 20px 70px;
+        text-align: center;
+    }
+
+    .footer-text {
+        font-family: var(--font-en);
+        font-size: 10.9px;
+        line-height: 16.8px;
+        color: var(--gray-divider);
+    }
+
+    /* Responsive */
+    @media (max-width: 1440px) {
+        .hero,
+        .works-section,
+        .profile-section {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .hero-content {
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-text {
+            align-items: center;
+            text-align: center;
+        }
+        .hero-image { justify-content: center; }
+        .works-grid { grid-template-columns: repeat(2, 1fr); }
+        .work-placeholder { grid-column: auto; }
+        .profile-main { flex-direction: column; }
+        .profile-photo {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header { padding: 24px; }
+        .menu-button { width: 56px; height: 56px; }
+        .hero { padding: 80px 24px 40px; min-height: auto; }
+        .hero-title { font-size: 36px; }
+        .hero-name { font-size: 32px; }
+        .hero-description { font-size: 16px; }
+        .hero-image img { width: 240px; height: 240px; }
+        .works-section, .profile-section { padding: 60px 20px; }
+        .works-grid { grid-template-columns: 1fr; }
+        .profile-detail { flex-direction: column; gap: 20px; padding: 32px 24px; }
+        .profile-detail-label { width: 100%; }
+    }
+</style>

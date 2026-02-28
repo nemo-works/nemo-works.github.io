@@ -1,0 +1,247 @@
+---
+interface Image {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: Image[];
+}
+
+const { images } = Astro.props;
+const hasCaptions = images.some(img => img.caption);
+const showFooter = images.length > 1 || hasCaptions;
+const captionsJson = JSON.stringify(images.map(img => img.caption ?? ''));
+---
+
+<section class="feature-image">
+  <div class="carousel">
+    <div class="carousel-track">
+      {images.map((img, i) => (
+        <img
+          src={img.src}
+          alt={img.alt}
+          class="carousel-slide"
+          data-index={i}
+        />
+      ))}
+    </div>
+
+    {images.length > 1 && (
+      <>
+        <button class="carousel-arrow carousel-arrow--prev" aria-label="前の画像">
+          <span class="material-icons">chevron_left</span>
+        </button>
+        <button class="carousel-arrow carousel-arrow--next" aria-label="次の画像">
+          <span class="material-icons">chevron_right</span>
+        </button>
+        <div class="carousel-hit-area carousel-hit-area--prev" aria-hidden="true" />
+        <div class="carousel-hit-area carousel-hit-area--next" aria-hidden="true" />
+      </>
+    )}
+  </div>
+
+  {showFooter && (
+    <div class="image-footer">
+      {hasCaptions && (
+        <p class="image-caption" data-captions={captionsJson}>
+          {images[0].caption ?? ''}
+        </p>
+      )}
+      {images.length > 1 && (
+        <div class="image-pagination">
+          {images.map((_, i) => (
+            <button
+              class:list={["pagination-dot", { active: i === 0 }]}
+              data-index={i}
+              aria-label={`${i + 1}枚目`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+</section>
+
+<style>
+  .feature-image {
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+  }
+
+  .carousel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ホバー時のみ矢印を表示 */
+  .carousel:not(:hover) .carousel-arrow {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .carousel-slide {
+    width: 100%;
+    flex-shrink: 0;
+    height: auto;
+    display: block;
+  }
+
+  /* 左右クリック領域（透明・画像の上に重ねる） */
+  .carousel-hit-area {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .carousel-hit-area--prev { left: 0; cursor: pointer; }
+  .carousel-hit-area--next { right: 0; cursor: pointer; }
+
+  /* 矢印ボタン */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--black-opacity);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s, background 0.2s;
+    pointer-events: none; /* クリックは hit-area が受け取る */
+  }
+
+  .carousel-arrow--prev { left: 16px; }
+  .carousel-arrow--next { right: 16px; }
+
+  .carousel-arrow .material-icons {
+    font-size: 32px;
+    color: var(--gray-white);
+  }
+
+  /* footer（caption + pagination） */
+  .image-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 40px;
+    margin-left: 20px;
+  }
+
+  .image-caption {
+    flex: 1;
+    padding: 0 16px;
+    font-size: var(--fs-tag);
+    color: var(--gray-sub);
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .image-pagination {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .pagination-dot {
+    width: 40px;
+    height: 40px;
+    background: var(--gray-background);
+    border: 1px solid var(--gray-divider);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--gray-sub);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .pagination-dot.active {
+    background: var(--primary-orange);
+    color: white;
+    border-color: var(--primary-orange);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.feature-image').forEach((section) => {
+    const track = section.querySelector<HTMLElement>('.carousel-track');
+    const dots = section.querySelectorAll<HTMLButtonElement>('.pagination-dot');
+    const prevArea = section.querySelector<HTMLElement>('.carousel-hit-area--prev');
+    const nextArea = section.querySelector<HTMLElement>('.carousel-hit-area--next');
+    const slides = section.querySelectorAll<HTMLElement>('.carousel-slide');
+    const captionEl = section.querySelector<HTMLElement>('.image-caption');
+    const captions: string[] = captionEl
+      ? JSON.parse(captionEl.dataset.captions ?? '[]')
+      : [];
+    const total = slides.length;
+
+    if (!track || total <= 1) return;
+
+    // 先頭スライドのクローンをトラック末尾に追加（前方ループ用）
+    const cloneFirst = slides[0].cloneNode(true) as HTMLElement;
+    track.appendChild(cloneFirst);
+
+    let current = 0;
+
+    function updateDots(index: number) {
+      dots.forEach((d, i) => d.classList.toggle('active', i === index % total));
+    }
+
+    function updateCaption(index: number) {
+      if (captionEl) captionEl.textContent = captions[index % total] ?? '';
+    }
+
+    function goTo(index: number, animate = true) {
+      if (!animate) {
+        track!.style.transition = 'none';
+      }
+      current = index;
+      track!.style.transform = `translateX(-${index * 100}%)`;
+      updateDots(index);
+      updateCaption(index);
+      if (!animate) {
+        track!.offsetHeight; // reflow して transition: none を確定
+        track!.style.transition = '';
+      }
+    }
+
+    // クローン（index = total）への遷移完了後、瞬時に本物の先頭へリセット
+    track.addEventListener('transitionend', () => {
+      if (current >= total) {
+        goTo(0, false);
+      }
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+    });
+
+    prevArea?.addEventListener('click', () => {
+      goTo(current <= 0 ? total - 1 : current - 1);
+    });
+    nextArea?.addEventListener('click', () => {
+      goTo(current + 1); // total-1 の次は total（クローン）→ transitionend で 0 へリセット
+    });
+  });
+</script>

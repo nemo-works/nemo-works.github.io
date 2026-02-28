@@ -1,0 +1,117 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ContentHeader from '../../components/ContentHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import FeatureCarousel from '../../components/FeatureCarousel.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { alkooWorks } from '../../data/alkoo';
+
+const work = alkooWorks.find(w => w.id === 'shade-route')!;
+---
+
+<DetailLayout
+  title="日陰ルート機能"
+  backHref="/alkoo"
+  breadcrumb={[
+    { label: "TOP", href: "/" },
+    { label: "ALKOO", href: "/alkoo" },
+    { label: "日陰ルート" },
+  ]}
+>
+
+  <ContentHeader
+    variant="detail"
+    title="日陰率と地図上の日陰の視覚化。\n猛暑下での最適なルートを比較・検討しやすい機能で、グッドデザイン賞を受賞。"
+    description="現在地から目的地まで日陰を優先した徒歩ルートを表示する機能です。\n任意の場所まで最大5種類のルートを引くことができ、それぞれのルートを占める日陰率の割合を確認することができ、日中に歩くユーザーにとって最適かつ涼しく歩けるルートの検討に役立たせることができる機能になっています。"
+    tags={work.tags}
+    period="2023年6月〜2023年8月"
+    tasks={["UI/UX設計", "告知物デザイン作成", "グッドデザイン賞関連対応"]}
+    members={["PM…1名", "エンジニア…3名", "デザイナー…1名"]}
+    images={[{ src: "/img/shade-route/kv.png", alt: "日陰ルート機能紹介" }]}
+    imageLayout="single"
+  />
+
+  <!-- 概要 -->
+   <ContentSection
+        title='機能概要'
+        maintext='ここ数年、毎年都心では猛暑による熱中症被害が相次いでいます。日々習慣としてウォーキングを楽しむ人にとって、運動をしないという選択肢は非現実的です。ユーザーが夏の猛暑下でもウォーキングを楽しめるようにALKOOでは時間ごとの日陰データを算出し、涼しく歩ける「日陰ルート」を検索できる機能を提供開始しました。'
+    />
+
+  <div class="sections-list">
+    <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />
+    
+    <!-- 開発経緯 -->
+    <ContentSection
+        title='開発の経緯'
+        maintext='2021年に開発した「日陰マップ」ではテレビ掲載など、大きな反響を呼びました。
+        ですが、「日陰マップ」のみでは日陰の場所を地図上に表示するだけで、日陰のある場所を地図上で確認する必要がありそのままでは不便でした。そこでルートとして検索できるようにすることで、今まで以上に日常の散歩シーンにあった提案ができる状態を目指しました。'
+    />
+
+    <!-- UI/UX検討 -->
+     <ContentSection
+        title='日陰率表示で、判断をカンタンに。'
+        maintext='まず開発チームから提供されたプロトタイプでは「日陰を通るルート」がルートの中の一種として提供されるというだけでした。
+        ですが、それだけでは本当に日陰を通っているのかの判断が難しく、他のルートとの比較もできませんでした。
+        そこで、開発用に出力していた「日陰率」を全てのルートにサブ情報として表示することによって、一目で優位性がわかるようなUIにしました。'
+    />
+
+    <ContentSection
+        title='ルートの質もチューニング'
+        maintext='また、初期の日陰ルートの検索エンジンは、極度に日陰率を高めようとするため、任意の歩数で周辺を周回する「散歩ルート」などで経路検索をした際にユーザーが入力した歩数を大幅にオーバーした迂回路を提示してくることがありました。
+        100%日陰の中を歩くことは日中は不可能なので、開発チームに依頼し、ある程度の日向は許容してでも極端な迂回を避けるようシステム側のチューニングも詳細に行いました。'
+    />
+    
+    <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/shade-route/img_shade_route_cap001@2x.png", alt: "UI・仕様上の工夫" },
+    ]} />
+  </div>
+
+  <div class="sections-list">
+  <SectionHeader subtitle="反響とグッドデザイン賞受賞" title="OUTCOME"/>
+
+    <!-- GD賞受賞 -->
+    <ContentSection
+        title='グッドデザイン賞受賞'
+        maintext='この機能は2022年にリリースした「日陰マップ」と合わせて、社会問題となっている夏の猛暑への解決策と、ナビゲーション事業を長年続けてきたからこそのきめ細やかなこだわりが評価され「グッドデザイン賞」を受賞しました。'
+    />
+
+    <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/shade-route/img_shade_route_cap002.jpg", alt: "2023年グッドデザイン賞受賞", caption: "2023年度グッドデザイン賞受賞" },
+      { src: "/img/shade-route/img_shade_route_cap003.jpg", alt: "グッドデザイン賞受賞展 展示ブースの様子", caption: "グッドデザイン賞受賞展の実際の展示ブース" },
+    ]} />
+
+    <!-- 反響 -->
+    <ContentSection
+        title='メディア掲載・SNS投稿で見えた需要の大きさ'
+        maintext='2022年の「日陰マップ」の時点で10件以上のテレビ放映をしていましたが、「日陰ルート」になって以降も毎年夏になるとテレビ放映が行われ、毎年5件以上のテレビ掲載がされました。
+        また、Xでは美容系のインフルエンサーアカウントに機能を紹介してもらい17万imp、約260件リポストされ、猛暑下でも歩く必要があることの大きな需要を改めて認識することができました。'
+    />
+    <ContentSection
+        title='プレミアムコースの課金数が通常の5倍に'
+        maintext='流入像の結果も相まって、プレミアムコースの課金数も前年度比の5倍、インストール数も通常の約4倍に増加しました。'
+    />
+  </div>
+
+  <!-- 関連リンク -->
+  <RelatedLinks links={[
+    { href: "https://www.g-mark.org/gallery/winners/18089", label: "「日陰ルート」グッドデザイン受賞ページ" },
+    { href: "https://corporate.navitime.co.jp/topics/pr/202307/20_5618.html", label: "株式会社ナビタイムジャパン「ALKOO by NAVITIME」にて、「日陰ルート」を公開開始" },
+    { href: "https://static.cld.navitime.jp/walkingapp-storage/common/lp/shaderoute/index.html", label: "暑さ対策機能ご紹介(日陰マップ/日陰ルート) | ALKOO by NAVITIME" },
+  ]} />
+
+  <!-- Navigation Footer -->
+  <nav class="nav-footer">
+    <a href="/alkoo" class="nav-button">
+      <span class="material-icons">arrow_back</span>
+      <span>日陰ルート機能</span>
+    </a>
+    <a href="#" class="nav-button">
+      <span>散歩ルート機能</span>
+      <span class="material-icons">arrow_forward</span>
+    </a>
+  </nav>
+
+</DetailLayout>

@@ -1,0 +1,48 @@
+:root {
+    --primary-orange: #e17f2c;
+    --primary-opacity: #e1802c33;
+    --gray-main: #333;
+    --gray-sub: #8b8b8b;
+    --gray-icon: #7d7d7d;
+    --gray-divider: #e0e0e0;
+    --gray-background: #f0f0f0;
+    --black-opacity: #0000004d;
+    --gray-white: #fff;
+    --blue: #07f;
+
+    /* Font Families */
+    --font-en: 'Inter', sans-serif;  /* 英語テキスト優先 */
+
+    /* Typography */
+    --fs-body: 1rem;       /* 16px */
+    --fs-read: 1.125rem;     /* 18px */
+    --fs-tag: 0.875rem;     /* 14px */
+    --fs-sub: 1.25rem;     /* 20px */
+    --fs-heading-sm: 1.75rem;  /* 28px */
+    --fs-heading-lg: 3.5rem;    /* 56px */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* 1rem の基準 */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Zen Kaku Gothic New', 'Inter', sans-serif;
+    color: var(--gray-main);
+    background: var(--gray-white);
+    overflow-x: hidden;
+}
+
+h2 {
+    font-size: var(--fs-heading-sm);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--gray-main);
+}

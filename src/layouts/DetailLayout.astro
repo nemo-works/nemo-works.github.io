@@ -1,0 +1,172 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;           // <title> タグのテキスト
+  backHref: string;        // 戻るボタンのリンク先
+  breadcrumb: BreadcrumbItem[]; // パンくずリスト
+}
+
+const { title, backHref, breadcrumb } = Astro.props;
+---
+
+<BaseLayout title={title} bodyBg="var(--gray-background)">
+  <!-- Header -->
+  <SiteHeader variant="back" backHref={backHref} />
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <ol class="breadcrumb-list">
+        {breadcrumb.map((item, index) => (
+          <li class="breadcrumb-item">
+            {item.href
+              ? <a href={item.href} class="breadcrumb-link">{item.label}</a>
+              : <span class="breadcrumb-current" aria-current="page">{item.label}</span>
+            }
+            {index < breadcrumb.length - 1 && (
+              <span class="breadcrumb-separator" aria-hidden="true">›</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  /* Main Content */
+  .main-content {
+    padding: 0px 250px 80px;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    margin:20px 0px 20px 70px;
+  }
+
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--fs-body);
+    color: var(--gray-sub);
+  }
+
+  .breadcrumb-link {
+    color: var(--gray-sub);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb-link:hover {
+    color: var(--gray-main);
+    text-decoration: underline;
+  }
+
+  .breadcrumb-current {
+    color: var(--gray-main);
+  }
+
+  .breadcrumb-separator {
+    color: var(--gray-sub);
+    font-size: 1.1em;
+  }
+
+  /* Responsive */
+  @media (max-width: 1440px) {
+    .main-content { padding-left: 150px; padding-right: 150px; }
+  }
+
+  @media (max-width: 1024px) {
+    .main-content { padding-left: 60px; padding-right: 60px; }
+  }
+
+  @media (max-width: 768px) {
+    .main-content { padding: 80px 24px 60px; }
+  }
+</style>
+
+<!-- slot内のクラスに適用するためglobalスコープで定義 -->
+<style is:global>
+
+  /* Content List - alkoo の works-list 相当のコンテナ */
+  .sections-list{
+    margin:40px 0px;
+    background: var(--gray-white);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Content Section */
+  .content-section {
+    background-color: var(--gray-white);
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+    padding: 40px 70px;
+  }
+
+  .content-section-title {
+    padding-bottom: 20px;
+  }
+
+  .content-section-main {
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--gray-main);
+  }
+
+  /* Navigation Footer */
+  .nav-footer {
+    background: var(--gray-white);
+    padding: 24px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--gray-background);
+    border: 1px solid var(--gray-divider);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--gray-main);
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+
+  .nav-button:hover { background: var(--gray-divider); }
+  .nav-button .material-icons { font-size: var(--fs-sub); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .feature-image,
+    .content-section,
+    .nav-footer { padding: 24px; }
+
+    .section-title { font-size: var(--fs-sub); }
+  }
+</style>

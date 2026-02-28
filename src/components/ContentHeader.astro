@@ -1,0 +1,249 @@
+---
+import TagList from './TagList.astro';
+
+interface ImageItem {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  subtitle?: string;
+  title: string;
+  description: string;
+  tags?: string[];
+  period: string;
+  tasks: string[];
+  members: string[];
+  variant?: 'overview' | 'detail';
+  images?: ImageItem[];
+  imageLayout?: 'single' | 'multi';
+}
+
+const {
+  subtitle,
+  title,
+  description,
+  tags,
+  period,
+  tasks,
+  members,
+  variant = 'overview',
+  images = [],
+  imageLayout = 'single',
+} = Astro.props;
+---
+
+<section class:list={['content-header', `variant-${variant}`]}>
+  <div class="header-block">
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+    <h1 class="title">
+      {title.split('\n').map((line, i, arr) => (
+        <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
+      ))}
+    </h1>
+    <p class="description">
+      {description.split('\n').map((line, i, arr) => (
+        <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
+      ))}
+    </p>
+    {tags && tags.length > 0 && <TagList tags={tags} />}
+  </div>
+
+  <div class="info-block">
+    <div class="info-item">
+      <div class="info-row">
+        <span class="info-label">対応期間</span>
+        <div class="info-divider"></div>
+      </div>
+      <div class="info-content">{period}</div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <span class="info-label">やったこと</span>
+        <div class="info-divider"></div>
+      </div>
+      <div class="info-content">
+        {tasks.map((task, i) => (
+          <Fragment>{task}{i < tasks.length - 1 && <br />}</Fragment>
+        ))}
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-row">
+        <span class="info-label">メンバー構成</span>
+        <div class="info-divider"></div>
+      </div>
+      <div class="info-content">
+        {members.map((member, i) => (
+          <Fragment>{member}{i < members.length - 1 && <br />}</Fragment>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {images.length > 0 && (
+    <div class:list={['image-block', `layout-${imageLayout}`]}>
+      {images.map(img => (
+        <div class="image-item">
+          <img src={img.src} alt={img.alt} />
+        </div>
+      ))}
+    </div>
+  )}
+</section>
+
+<style>
+  .content-header {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: var(--gray-white);
+  }
+
+  .header-block {
+    background: var(--gray-white);
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+    padding: 40px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .subtitle {
+    font-size: var(--fs-sub);
+    font-weight: 500;
+    color: var(--gray-sub);
+    line-height: 1;
+  }
+
+  /* overview variant: 英語タイトル向け */
+  .variant-overview .title {
+    font-family: var(--font-en);
+    font-size: var(--fs-heading-lg);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--gray-main);
+  }
+
+  /* detail variant: 日本語タイトル向け */
+  .variant-detail .title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--gray-main);
+  }
+
+  .description {
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--gray-main);
+  }
+
+  .info-block {
+    padding: 0px 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-label {
+    font-size: var(--fs-sub);
+    font-weight: 500;
+    color: var(--gray-sub);
+    white-space: nowrap;
+  }
+
+  .info-divider {
+    flex: 1;
+    height: 2px;
+    background: var(--gray-divider);
+  }
+
+  .info-content {
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--gray-main);
+  }
+
+  /* --- Image Block --- */
+
+  /* single: 1枚をコンポーネント全幅表示 */
+  .image-block.layout-single .image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top: 1px solid var(--gray-divider) ;
+  }
+
+  /* multi: 2カラムグリッド表示 */
+  .image-block.layout-multi {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  /* 奇数枚のとき最後の1枚を全幅に */
+  .image-block.layout-multi .image-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .image-block.layout-multi .image-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* --- Responsive --- */
+
+  @media (max-width: 1024px) {
+    .info-block {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-block {
+      padding: 32px 24px;
+    }
+
+    .variant-overview .title {
+      font-size: 32px;
+    }
+
+    .variant-detail .title {
+      font-size: var(--fs-heading-sm);
+    }
+
+    .description {
+      font-size: var(--fs-body);
+    }
+
+    .info-block {
+      padding: 0 24px;
+    }
+
+    .image-block.layout-multi {
+      grid-template-columns: 1fr;
+    }
+
+    .image-block.layout-multi .image-item:last-child:nth-child(odd) {
+      grid-column: auto;
+    }
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ContentHeader from '../../components/ContentHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import FeatureCarousel from '../../components/FeatureCarousel.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { alkooWorks } from '../../data/alkoo';
+
+const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
+---
+
+<DetailLayout
+  title="歩数共有機能"
+  backHref="/alkoo"
+  breadcrumb={[
+    { label: "TOP", href: "/" },
+    { label: "ALKOO", href: "/alkoo" },
+    { label: "歩数共有機能" },
+  ]}
+>
+  <ContentHeader
+    variant="detail"
+    title="歩数を画像・イラストに載せて友人や家族に共有。
+    周囲の人に今日の思い出と歩数を共有して日々のモチベーションを維持。"
+    description="毎日の歩数を写真やイラストを添えてSNS共有。今日と今日の歩みを分かち合い、ユーザー像の理解がより確実なものに。"
+    tags={work.tags}
+    period="2025年4月〜2025年6月"
+    tasks={["仕様検討", "UI検討","機能提案"]}
+    members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
+    images={[{ src: "/img/steps-sharing/kv.jpg", alt: "歩数共有機能" }]}
+    imageLayout="single"
+  />
+
+<!-- 概要 -->
+   <ContentSection
+        title='機能概要'
+        maintext=
+        '歩数を自分が撮影した画像やイラストに載せてSNSに共有ができるシンプルな機能です。
+        ですが、この機能によってALKOOに求められている機能の需要、ユーザー像が今まで以上に明確になりました。
+        '
+    />
+
+  <div class="sections-list">
+    <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />
+    <ContentSection
+        title='開発の経緯'
+        maintext=
+        'ALKOOの基本機能は歩数計測機能のため競合サービスは多々あり、新規ユーザー獲得の方法が確立できないことが一種の悩みになっていました。
+        そこで、画像共有によって、ユーザーには今日の散歩の記録を友人や家族に共有でき、サービス側にとってはユーザーの共有による認知拡大ができる状態を目指しました。
+        '
+    />
+    <ContentSection
+        title='どんな情報を載せるか？'
+        maintext=
+        'ALKOOは記録画面に撮影された写真が表示されるようになっていて、日々の記録と一緒にウォーキングの習慣を意識し続けることを目指したコンセプトになっています。そこで、シンプルですが写真と一緒に歩数を共有できることを主軸の機能として開発を行いました。
+        「歩数円」バージョンや「イラスト」もデフォルトで設定することで、写真がない日でもユーザーの用途に合わせて気軽に映える近況報告ができる状態を目指しました。
+        '
+    />
+    
+    <ContentSection
+        title='グロースに向けた考慮'
+        maintext=
+        '共有をどこからできるようにするかという点で、私から提案したのが歩数円の下にボタンを追加するという案です。
+        グロース面で考えると共有してくれるユーザーは新しいユーザーへの繋がりになりますし、日々の頑張りを誰かに伝えるという使い方はユーザーの運動習慣の継続にも役立つと考え、一丁目一番地のすぐ下の活用に踏み出しました。
+        また、画像内にアイコンとロゴを入れることで、どのアプリから共有されたか説明しなくても画像を見ればわかる状態も考慮しました。
+        '
+    />
+      <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/steps-sharing/img_step_share_cap001.jpg", alt: "作成できる画像の種類", caption: "作成できる画像の種類" },
+      { src: "/img/steps-sharing/img_step_share_cap002.jpg", alt: "歩数円の下に置きユーザーに共有という新しい使い方を提示した", caption: "歩数円の下に「共有ボタン」を置き、ユーザーとしてもサービスとしても新しい使い方を提示することにした" },
+    ]} />
+  </div>
+
+  <div class="sections-list">
+    <SectionHeader subtitle="反響と利用実績" title="OUTCOME"/>
+    <ContentSection
+        title='「家族」への共有が1番'
+        maintext=
+        'リリースの結果、LINEでの共有が一番多く、次いでXでの共有となっていて、顔見知り以上に、家族や身近な友人への共有が多いという実態が見えました。
+        確かに、法人の引き合いでは家族への歩数の共有を通して見守りが行える機能が欲しいなどのお声があったため、一定数の需要は最初から窺えていましたが、実際の利用実績も同様のものになっていたため、需要の証明ができる結果となりました。
+        '
+    />
+    <ContentSection
+        title='「#ALKOOで歩こう」でユーザーの頑張りを知ることができた'
+        maintext=
+        'Xで共有した際には「#ALKOOで歩こう」というタグがつくようになっていて、ユーザーが画像を投稿すると我々やユーザー同士でお互いの今日の歩数が確認できるようにしました。
+        投稿してくださっているユーザーの中には持病の対策として歩きはじめた人、少しでも痩せるために毎日頑張ると決めた人、さまざまな事情で歩きはじめた人に気づくことができました。
+        お恥ずかしい限りですが、この機能を入れたことではじめて多くの人の頑張りを身近に感じるようになり、ユーザー像の理解、アプリを利用するきっかけを今まで以上に真剣に理解できるようになった施策・機能でした。
+        '
+    />
+  </div>
+
+  <!-- Navigation Footer -->
+  <nav class="nav-footer">
+    <a href="/alkoo" class="nav-button">
+      <span class="material-icons">arrow_back</span>
+      <span>前のページ名</span>
+    </a>
+    <a href="#" class="nav-button">
+      <span>次のページ名</span>
+      <span class="material-icons">arrow_forward</span>
+    </a>
+  </nav>
+</DetailLayout>

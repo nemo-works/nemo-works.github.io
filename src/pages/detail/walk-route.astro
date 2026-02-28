@@ -1,0 +1,95 @@
+---
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import ContentHeader from '../../components/ContentHeader.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import ContentSection from '../../components/ContentSection.astro';
+import FeatureCarousel from '../../components/FeatureCarousel.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { alkooWorks } from '../../data/alkoo';
+
+const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
+---
+
+<DetailLayout
+  title="散歩ルート機能"
+  backHref="/alkoo"
+  breadcrumb={[
+    { label: "TOP", href: "/" },
+    { label: "ALKOO", href: "/alkoo" },
+    { label: "散歩ルート機能" },
+  ]}
+>
+  <ContentHeader
+    variant="detail"
+    title=
+        "運動習慣を飽きずに続けるために。
+        時間や距離、目標の歩数でライフスタイルに合わせたランダムなルートをサクッと提案。"
+    description="時間や距離、目標の歩数に合わせて、現在地から周辺を回って元の場所に戻ってくることができる「ちょうどいい」を追求したルート検索機能の製作。"
+    tags={work.tags}
+    period="2021年12月〜2022年4月"
+    tasks={["仕様検討", "UI検討","機能提案"]}
+    members={["PM…1名", "エンジニア…5名", "デザイナー…1名"]}
+    images={[{ src: "/img/walk-route/kv.png", alt: "歩数共有機能" }]}
+    imageLayout="single"
+  />
+
+<!-- 概要 -->
+   <ContentSection
+        title='機能概要'
+        maintext=
+        'この機能は入力された歩数もしくは時間に合わせて周辺をいい感じにぐるっと回って戻って来れるルート検索機能です。\n周辺に大きな公園やウォーキングコースがない環境や、夕飯の前にちょっと歩きたい時など生活のちょっとしたタイミングで使えるルートがどこでも検索でき、運動の習慣を続けられるような機能を目指しました。
+        '
+    />
+
+  <div class="sections-list">
+    <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />
+    <ContentSection
+        title='開発の経緯'
+        maintext=
+        'ALKOOを運営するにあたり、ナビタイムジャパンでは毎年社内ウォーキングイベントが開催されていました。イベントの内容はハードで、平均歩数1万歩を1~2ヶ月続けるなど、普通に生活をしているとそこそこ難しい内容でした。
+        そんな環境だったことが影響し、社内エンジニアの「歩かなきゃいけないのはわかるんだけど、家の周り歩くのもう飽きた」という発想からこの機能は生まれました。'
+    />
+    <ContentSection
+        title='飽きずに歩けるルートを構築'
+        maintext=
+        'ナビタイムの経路探索エンジンでは、最短経路を通ることを最適解としているため、初期段階では純粋に同じ道を往復するルートでしたが、それでは退屈してしまいます。
+        そこで、入力された歩数の半分で行ける場所を内部的に経由地として保存し、行きと帰りでは違う道、なるべく円形に近い形状を描くようにする仕組みで飽きずに歩けるルートになるような工夫を施しています。
+        '
+    />
+    
+    <ContentSection
+        title='シークバーでシンプルな操作'
+        maintext=
+        'シークバーで歩数・時間を変えると、それに合わせて地図上の円も一緒に大きさが変わるため、大体どこまで歩くかのおおよその目安がつき、あまり考えなくても検索ができるシンプルなUIでリリースしました。
+        もし、検索の結果がお気に召さなくても再検索をすると東西南北違う方向に向かってルート検索をするような工夫もされているので、選び直しが簡単な機能になっています。
+        '
+    />
+      <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/walk-route/walk-route-001.webp", alt: "ルート開発の初期段階と改善後のルート" , caption: "初期はただの往復ルートでしたが行き帰りを違う道で帰って来れるように調整" },
+      { src: "/img/walk-route/walk-route-002.jpg", alt: "再検索で東西南北にさまざまなルートが表示される", caption:"再検索で東西南北に検索を行いルートのバリエーションが出るように調整" },
+    ]} />
+  </div>
+
+  <div class="sections-list">
+    <SectionHeader subtitle="反響と利用実績" title="OUTCOME"/>
+    <ContentSection
+        title='リリースで気付いた意外な需要'
+        maintext=
+        '当初は運動習慣をつけたいけど続かないという人に向けて作っていたのですが、目的地がない散歩が苦手だという人が理想的だと言ってくれたり、妊婦さんも習慣的に運動する必要があるため、散歩に助かっているという投稿がX上で見られるようになり、作った側も想定していなかった意外な需要がだんだんと明らかになっていきました。今ではシンプルな歩数計アプリとは一味違うALKOOの代表機能になっています。
+        '
+    />
+  </div>
+
+  <!-- Navigation Footer -->
+  <nav class="nav-footer">
+    <a href="/alkoo" class="nav-button">
+      <span class="material-icons">arrow_back</span>
+      <span>前のページ名</span>
+    </a>
+    <a href="#" class="nav-button">
+      <span>次のページ名</span>
+      <span class="material-icons">arrow_forward</span>
+    </a>
+  </nav>
+</DetailLayout>
