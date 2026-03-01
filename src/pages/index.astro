@@ -4,6 +4,7 @@ import WorkCard from '../components/WorkCard.astro';
 import PasswordOverlay from '../components/PasswordOverlay.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import IconLink from '../components/IconLink.astro';
 ---
 
 <BaseLayout title="Soma Nemoto Portfolio">
@@ -18,7 +19,7 @@ import SiteHeader from '../components/SiteHeader.astro';
             <div class="hero-text">
                 <h1 class="hero-title">明快で、<br>わかりやすい<br>デザインを。</h1>
                 <p class="hero-name">Soma Nemoto</p>
-                <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられるデザイナーを志<br>しています。</p>
+                <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
             </div>
             <div class="hero-image">
                 <img src="/img/index/top-icon.png" alt="Soma Nemoto">
@@ -28,6 +29,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 
     <!-- Works Section -->
     <section class="works-section">
+        <div class="works-inner">
         <SectionHeader subtitle="取り組んできた仕事" title="WORKS" />
         <div class="works-grid">
             <WorkCard
@@ -67,6 +69,7 @@ import SiteHeader from '../components/SiteHeader.astro';
             />
             <div class="work-placeholder"></div>
         </div>
+        </div>
     </section>
 
     <!-- Profile Section -->
@@ -87,17 +90,11 @@ import SiteHeader from '../components/SiteHeader.astro';
                         東京工芸大学 デザイン学科に入学後、<br>
                         インタラクションデザイン研究室にてUIデザイン・インタラクションデザインを学び、2019年に卒業。<br>
                         <br>
-                        同年、株式会社ナビタイムジャパンに新卒として入社し、ウォーキングアプリ「ALKOObyNAVITIME」を中心にサービスのUIUXデザインを担当。
+                        同年4月、株式会社ナビタイムジャパンに新卒として入社。ウォーキングアプリ「ALKOObyNAVITIME」を中心にサービスのUIUXデザインを担当。
                     </div>
                     <div class="profile-links">
-                        <a href="#" class="profile-link">
-                            <span class="material-icons">link</span>
-                            <span class="profile-link-text">Web履歴書</span>
-                        </a>
-                        <a href="https://recruit.navitime.co.jp/interview/detail/interview10" class="profile-link" target="_blank">
-                            <span class="material-icons">link</span>
-                            <span class="profile-link-text">ナビタイムジャパン > 社員インタビュー</span>
-                        </a>
+                        <IconLink href="#" label="Web履歴書" />
+                        <IconLink href="https://recruit.navitime.co.jp/interview/detail/interview10" label="ナビタイムジャパン > 社員インタビュー" external />
                     </div>
                 </div>
             </div>
@@ -191,6 +188,7 @@ import SiteHeader from '../components/SiteHeader.astro';
         min-height: 1080px;
         padding: 80px 200px;
         display: flex;
+        justify-content: center;
         align-items: flex-end;
         position: relative;
         overflow: hidden;
@@ -200,9 +198,10 @@ import SiteHeader from '../components/SiteHeader.astro';
         position: relative;
         z-index: 1;
         width: 100%;
+        max-width: var(--max-width);
         display: flex;
         gap: 20px;
-        padding: 23px;
+        /*padding: 23px;*/
     }
 
     .hero-text {
@@ -253,6 +252,11 @@ import SiteHeader from '../components/SiteHeader.astro';
         padding: 80px 200px;
     }
 
+    .works-inner {
+        max-width: var(--max-width);
+        margin: 0 auto;
+    }
+
     .works-grid {
         background: var(--gray-white);
         display: grid;
@@ -273,6 +277,8 @@ import SiteHeader from '../components/SiteHeader.astro';
     }
 
     .profile-container {
+        max-width: var(--max-width);
+        margin: 0 auto;
         background: var(--gray-white);
         border: 1px solid var(--gray-divider);
         display: flex;
@@ -302,6 +308,7 @@ import SiteHeader from '../components/SiteHeader.astro';
     .profile-content {
         flex: 1;
         display: flex;
+        justify-content: center;
         flex-direction: column;
         gap: 40px;
     }
@@ -313,8 +320,8 @@ import SiteHeader from '../components/SiteHeader.astro';
     }
 
     .profile-name-jp {
-        font-size: 32px;
-        font-weight: 500;
+        font-size: var(--fs-heading-md);
+        font-weight: 700;
         color: var(--gray-main);
     }
 
@@ -326,7 +333,7 @@ import SiteHeader from '../components/SiteHeader.astro';
     }
 
     .profile-bio {
-        font-size: 16px;
+        font-size: var(--fs-body);
         line-height: 1.8;
         color: var(--gray-main);
     }
@@ -335,28 +342,6 @@ import SiteHeader from '../components/SiteHeader.astro';
         display: flex;
         flex-direction: column;
         gap: 4px;
-    }
-
-    .profile-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 3px 4px;
-        text-decoration: none;
-        color: var(--blue);
-    }
-
-    .profile-link:hover {
-        text-decoration: underline;
-    }
-
-    .profile-link .material-icons {
-        font-size: var(--fs-heading-sm);
-    }
-
-    .profile-link-text {
-        font-size: 16px;
-        font-weight: 500;
     }
 
     .profile-detail {

@@ -1,0 +1,43 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+const { href, label, external = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class="icon-link"
+  {...external && { target: '_blank', rel: 'noopener noreferrer' }}
+>
+  <span class="material-icons">link</span>
+  <span class="icon-link-text">{label}</span>
+</a>
+
+<style>
+  .icon-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--blue);
+  }
+
+  .icon-link:hover {
+    background-color: var(--blue-opacity);
+    border-radius: 4px;
+  }
+
+  .icon-link .material-icons {
+    font-size: var(--fs-heading-sm);
+  }
+
+  .icon-link-text {
+    font-size: var(--fs-body);
+    font-weight: 400;
+  }
+</style>

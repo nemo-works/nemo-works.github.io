@@ -45,14 +45,14 @@ ALKOOプロジェクト配下の制作物リストを管理するデータファ
   listTitle: '散歩ルート機能',
   listDescription: '説明文。',
   thumbnail: { src: '/img/alkoo-top/containts-03.png', alt: '散歩ルート機能' },
-  href: '/detail/walk-route',  // 詳細ページのパス
+  href: '/detail/alkoo/walk-route',  // 詳細ページのパス
   tags: ['#機能検討', '#UI/UX'],
 },
 ```
 
 **② 詳細ページファイルを作成**
 
-`pages/detail/shade-route.astro` を参考に `pages/detail/walk-route.astro` を作成する。
+`pages/detail/alkoo/shade-route.astro` を参考に `pages/detail/alkoo/walk-route.astro` を作成する。
 フロントマターで `id` に対応するエントリを取得し、`tags` を `ContentHeader` に渡す。
 
 ```astro
@@ -70,7 +70,7 @@ const work = alkooWorks.find(w => w.id === 'walk-route')!;
 
 ### `href: null` → 詳細ページあり に変更する
 
-詳細ページを追加したタイミングで `href: null` を `href: '/detail/walk-route'` に更新する。
+詳細ページを追加したタイミングで `href: null` を `href: '/detail/alkoo/walk-route'` に更新する。
 リストのリンク化とタグの共有が自動的に反映される。
 
 ```ts
@@ -78,7 +78,7 @@ const work = alkooWorks.find(w => w.id === 'walk-route')!;
 href: null,
 
 // after
-href: '/detail/walk-route',
+href: '/detail/alkoo/walk-route',
 ```
 
 ### AlkooWorkItem 型

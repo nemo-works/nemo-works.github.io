@@ -7,27 +7,27 @@ import FeatureCarousel from '../../../components/FeatureCarousel.astro';
 import RelatedLinks from '../../../components/RelatedLinks.astro';
 import { alkooWorks } from '../../../data/alkoo';
 
-const work = alkooWorks.find(w => w.id === 'shade-route')!;
+const work = alkooWorks.find(w => w.id === 'mothly-report')!;
 ---
 
 <DetailLayout
-  title="日陰ルート機能"
+  title="月間レポート"
   backHref="/alkoo"
   breadcrumb={[
     { label: "TOP", href: "/" },
     { label: "ALKOO", href: "/alkoo" },
-    { label: "日陰ルート" },
+    { label: "月間レポート" },
   ]}
 >
 
   <ContentHeader
     variant="detail"
-    title="日陰率と地図上の日陰の視覚化。\n猛暑下での最適なルートを比較・検討しやすい機能で、グッドデザイン賞を受賞。"
+    title="ユーザーのお出かけをキャラクターと一緒にふりかえり。\n1ヶ月の移動を「思い出」に感じられるあたたかなサービスイメージをコンテンツで表現。"
     description="現在地から目的地まで日陰を優先した徒歩ルートを表示する機能です。\n任意の場所まで最大5種類のルートを引くことができ、それぞれのルートを占める日陰率の割合を確認することができ、日中に歩くユーザーにとって最適かつ涼しく歩けるルートの検討に役立たせることができる機能になっています。"
     tags={work.tags}
-    period="2023年6月〜2023年8月"
-    tasks={["UI/UX設計", "告知物デザイン作成", "グッドデザイン賞関連対応"]}
-    members={["PM…1名", "エンジニア…3名", "デザイナー…1名"]}
+    period="2020年7月〜2020年8月"
+    tasks={["機能検討", "UIUX", "イラスト","グロース施策"]}
+    members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
     images={[{ src: "/img/shade-route/kv.png", alt: "日陰ルート機能紹介" }]}
     imageLayout="single"
   />

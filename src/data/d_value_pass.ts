@@ -21,7 +21,7 @@ export const dValuePassWorks: DValuePassWorkItem[] = [
     listTitle: 'メール広告運用',
     listDescription: '毎日の歩数を写真やイラストを添えてSNS共有。\n今日と今日の歩みを分かち合い、ユーザー像の理解がより確実なものに。',
     thumbnail: { src: '/img/alkoo-top/img_contents_alkoo_step_share.jpg', alt: '歩数共有機能' },
-    href: '/detail/steps-sharing', 
+    href: '/detail/alkoo/steps-sharing', 
     tags: ['UIUX','機能提案'],
   },
   {

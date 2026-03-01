@@ -9,9 +9,13 @@
     --black-opacity: #0000004d;
     --gray-white: #fff;
     --blue: #07f;
+    --blue-opacity: #0077ff1a;
 
     /* Font Families */
     --font-en: 'Inter', sans-serif;  /* 英語テキスト優先 */
+
+    /* Layout */
+    --max-width: 1480px;
 
     /* Typography */
     --fs-body: 1rem;       /* 16px */
@@ -19,6 +23,7 @@
     --fs-tag: 0.875rem;     /* 14px */
     --fs-sub: 1.25rem;     /* 20px */
     --fs-heading-sm: 1.75rem;  /* 28px */
+    --fs-heading-md: 2.5rem;    /*  */
     --fs-heading-lg: 3.5rem;    /* 56px */
 }
 

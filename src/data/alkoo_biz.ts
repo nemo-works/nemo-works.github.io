@@ -22,7 +22,7 @@ export const alkooBizWorks: AlkooBizWorkItem[] = [
     listTitle: 'イベントグラフィックデザイン',
     listDescription: '簡素なイベントでは、楽しいものでも楽しさが伝わらない。\nイベントパッケージの一環としてグラフィックデザインも行い、イベントの顔となって主催者を支援しています。',
     thumbnail: { src: '/img/alkoo-biz/img_contents_alkoobiz_chura.jpg', alt: 'ちゅらウォーク' },
-    href: '/detail/walk-route',
+    href: '/detail/alkoo/walk-route',
     tags: ['グラフィックデザイン','販促物作成'],
   },
   {

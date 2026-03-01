@@ -1,0 +1,83 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ContentHeader from '../components/ContentHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+interface ImageItem {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  pageTitle: string;
+  subtitle?: string;
+  title: string;
+  description: string;
+  period: string;
+  tasks: string[];
+  members: string[];
+  images?: ImageItem[];
+  imageLayout?: 'single' | 'multi';
+}
+
+const { pageTitle, subtitle, title, description, period, tasks, members, images, imageLayout } = Astro.props;
+---
+
+<BaseLayout title={pageTitle} bodyBg="var(--gray-background)">
+    <!-- Header -->
+    <SiteHeader variant="back" backHref="/" />
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <ContentHeader
+                subtitle={subtitle}
+                title={title}
+                description={description}
+                period={period}
+                tasks={tasks}
+                members={members}
+                images={images}
+                imageLayout={imageLayout}
+            />
+        </section>
+
+        <!-- Works List -->
+        <section class="works-list">
+            <SectionHeader subtitle="制作物" title="WORKS" />
+            <slot />
+        </section>
+    </main>
+</BaseLayout>
+
+<style>
+    /* Main Content */
+    .main-content {
+        max-width: var(--max-width);
+        margin: 0 auto;
+    }
+
+    /* Works List */
+    .works-list {
+        background: var(--gray-white);
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1440px) {
+        .main-content { padding-left: 100px; padding-right: 100px; }
+    }
+
+    @media (max-width: 1024px) {
+        .main-content { padding-left: 60px; padding-right: 60px; }
+    }
+
+    @media (max-width: 768px) {
+        .main-content { padding: 80px 24px 0; }
+    }
+</style>

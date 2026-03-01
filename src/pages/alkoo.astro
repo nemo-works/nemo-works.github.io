@@ -1,125 +1,27 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ContentHeader from '../components/ContentHeader.astro';
-import SectionHeader from '../components/SectionHeader.astro';
+import ServicePageLayout from '../layouts/ServicePageLayout.astro';
 import WorkItem from '../components/WorkItem.astro';
-import SiteHeader from '../components/SiteHeader.astro';
 import { alkooWorks } from '../data/alkoo';
 ---
 
-<BaseLayout title="ALKOO by NAVITIME - Soma Nemoto Portfolio" bodyBg="var(--gray-background)">
-    <!-- Header -->
-    <SiteHeader variant="back" backHref="/" />
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <ContentHeader
-                subtitle="自社サービス運用/ウォーキングアプリ"
-                title="ALKOO by NAVITIME"
-                description="ウォーキングを楽しむ人の一歩踏み出す気持ちを支え、運動の習慣づくりを支援する、歩数計機能を中心としたウォーキングアプリです。\n入社初年度より先任のデザイナーから引き継ぎ、機能検討を始めとするグロース施策からUIUXデザインまで、アプリサービスのデザイン・運営・マネタイズの全般を幅広く経験してきたコアとなるサービスです。"
-                period="2019年7月〜2026年現在"
-                tasks={["アプリ運営", "グロース施策" , "機能検討" , "グラフィック作成", "展示ブース"]}
-                members={["PM…1名", "エンジニア…2~8名", "デザイナー…1~3名"]}
-                images={[{ src: "/img/alkoo-top/kv.png", alt: "ALKOO Features" }]}
-                imageLayout="single"
-            />
-        </section>
-
-        <!-- Works List -->
-        <section class="works-list">
-            <SectionHeader subtitle="制作物" title="WORKS" />
-
-            {alkooWorks.map(work => (
-                <WorkItem
-                    href={work.href}
-                    thumbnail={work.thumbnail}
-                    listTitle={work.listTitle}
-                    listDescription={work.listDescription}
-                    tags={work.tags}
-                />
-            ))}
-        </section>
-    </main>
-</BaseLayout>
-
-<style>
-    /* Header */
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        padding: 48px;
-        z-index: 1000;
-    }
-
-    .back-button {
-        background: white;
-        width: 64px;
-        height: 64px;
-        border-radius: 16px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .back-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-
-    .back-button .material-icons {
-        font-size: 36px;
-        color: var(--gray-icon);
-    }
-
-    .back-button span {
-        font-size: 14px;
-        color: var(--gray-icon);
-        margin-top: 2px;
-    }
-
-    /* Main Content */
-    .main-content {
-        padding: 0 250px 0;
-    }
-
-    /* Hero Section */
-    .hero-section {
-        padding: 0 0 0;
-    }
-
-    /* Works List */
-    .works-list {
-        background: var(--gray-white);
-        padding: 40px 0;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1440px) {
-        .main-content { padding-left: 100px; padding-right: 100px; }
-    }
-
-    @media (max-width: 1024px) {
-        .main-content { padding-left: 60px; padding-right: 60px; }
-    }
-
-    @media (max-width: 768px) {
-        .header { padding: 24px; }
-        .back-button { width: 56px; height: 56px; }
-        .back-button .material-icons { font-size: 32px; }
-        .main-content { padding: 80px 24px 0; }
-    }
-</style>
+<ServicePageLayout
+    pageTitle="ALKOO by NAVITIME - Soma Nemoto Portfolio"
+    subtitle="自社サービス運用/ウォーキングアプリ"
+    title="ALKOO by NAVITIME"
+    description="ウォーキングを楽しむ人の一歩踏み出す気持ちを支え、運動の習慣づくりを支援する、歩数計機能を中心としたウォーキングアプリです。\n入社初年度より先任のデザイナーから引き継ぎ、機能検討を始めとするグロース施策からUIUXデザインまで、アプリサービスのデザイン・運営・マネタイズの全般を幅広く経験してきたコアとなるサービスです。"
+    period="2019年7月〜2026年現在"
+    tasks={["アプリ運営", "グロース施策" , "機能検討" , "グラフィック作成", "展示ブース"]}
+    members={["PM…1名", "エンジニア…2~8名", "デザイナー…1~3名"]}
+    images={[{ src: "/img/alkoo-top/kv.png", alt: "ALKOO Features" }]}
+    imageLayout="single"
+>
+    {alkooWorks.map(work => (
+        <WorkItem
+            href={work.href}
+            thumbnail={work.thumbnail}
+            listTitle={work.listTitle}
+            listDescription={work.listDescription}
+            tags={work.tags}
+        />
+    ))}
+</ServicePageLayout>

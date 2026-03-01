@@ -1,11 +1,11 @@
 ---
-import DetailLayout from '../../layouts/DetailLayout.astro';
-import ContentHeader from '../../components/ContentHeader.astro';
-import SectionHeader from '../../components/SectionHeader.astro';
-import ContentSection from '../../components/ContentSection.astro';
-import FeatureCarousel from '../../components/FeatureCarousel.astro';
-import RelatedLinks from '../../components/RelatedLinks.astro';
-import { alkooWorks } from '../../data/alkoo';
+import DetailLayout from '../../../layouts/DetailLayout.astro';
+import ContentHeader from '../../../components/ContentHeader.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import ContentSection from '../../../components/ContentSection.astro';
+import FeatureCarousel from '../../../components/FeatureCarousel.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import { alkooWorks } from '../../../data/alkoo';
 
 const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
 ---
