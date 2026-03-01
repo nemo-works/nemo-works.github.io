@@ -5,6 +5,7 @@ import PasswordOverlay from '../components/PasswordOverlay.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import IconLink from '../components/IconLink.astro';
+import RelatedLinks from'../components/RelatedLinks.astro'
 ---
 
 <BaseLayout title="Soma Nemoto Portfolio">
@@ -90,14 +91,19 @@ import IconLink from '../components/IconLink.astro';
                         東京工芸大学 デザイン学科に入学後、<br>
                         インタラクションデザイン研究室にてUIデザイン・インタラクションデザインを学び、2019年に卒業。<br>
                         <br>
-                        同年4月、株式会社ナビタイムジャパンに新卒として入社。ウォーキングアプリ「ALKOObyNAVITIME」を中心にサービスのUIUXデザインを担当。
-                    </div>
-                    <div class="profile-links">
-                        <IconLink href="#" label="Web履歴書" />
-                        <IconLink href="https://recruit.navitime.co.jp/interview/detail/interview10" label="ナビタイムジャパン > 社員インタビュー" external />
+                        同年4月、株式会社ナビタイムジャパンに新卒として入社。ウォーキングアプリ「ALKOObyNAVITIME」を中心にサービスのUIUXデザインを担当。 <br>
+                        <br>
+                        2022年4月より、株式会社NTTドコモ様が提供する「スゴ得コンテンツ」専用のナビゲーションサービス各種のデザインを担当。<br>
+                        2024年1月リリースの埼玉県様が提供する「コバトンALKOOマイレージ」にてデザイナーを担当<br>
+                        2025年4月リリースのJR東日本様が提供する「駅からハイキング」にてデザイナーを担当
                     </div>
                 </div>
             </div>
+
+            <RelatedLinks links={[
+                { href: "#", label: "Web履歴書" },
+                { href: "https://recruit.navitime.co.jp/interview/detail/interview10", label: "ナビタイムジャパン > 社員インタビュー" },
+            ]} />
 
             <div class="profile-detail profile-detail--last">
                 <div class="profile-detail-label">趣味</div>
@@ -127,6 +133,7 @@ import IconLink from '../components/IconLink.astro';
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
