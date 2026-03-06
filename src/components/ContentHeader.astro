@@ -31,13 +31,15 @@ const {
   images = [],
   imageLayout = 'single',
 } = Astro.props;
+
+const titleLines = title.split('\n');
 ---
 
 <section class:list={['content-header', `variant-${variant}`]}>
   <div class="header-block">
     {subtitle && <p class="subtitle">{subtitle}</p>}
     <h1 class="title">
-      {title.split('\n').map((line, i, arr) => (
+      {titleLines.map((line, i, arr) => (
         <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
       ))}
     </h1>
@@ -117,6 +119,18 @@ const {
     font-weight: 500;
     color: var(--gray-sub);
     line-height: 1;
+  }
+
+  .title {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 1.2s ease, transform 1.5s ease;
+    transition-delay: 0.1s;
+  }
+
+  .title.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* overview variant: 英語タイトル向け */
@@ -247,3 +261,22 @@ const {
     }
   }
 </style>
+
+<script>
+  const observe = () => {
+    const headers = document.querySelectorAll('.content-header');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelector('.title')?.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    headers.forEach(h => observer.observe(h));
+  };
+
+  observe();
+  document.addEventListener('astro:page-load', observe);
+</script>

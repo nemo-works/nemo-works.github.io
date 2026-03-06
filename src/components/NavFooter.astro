@@ -1,0 +1,33 @@
+---
+interface WorkNavItem {
+  id: string;
+  listTitle: string;
+  href: string | null;
+}
+
+interface Props {
+  works: WorkNavItem[];
+  currentId: string;
+}
+
+const { works, currentId } = Astro.props;
+
+const currentIndex = works.findIndex(w => w.id === currentId);
+const prev = currentIndex > 0 ? works[currentIndex - 1] : null;
+const next = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+---
+
+<nav class="nav-footer">
+  {prev ? (
+    <a href={prev.href ?? '#'} class="nav-button">
+      <span class="material-icons">arrow_back</span>
+      <span>{prev.listTitle}</span>
+    </a>
+  ) : <div />}
+  {next ? (
+    <a href={next.href ?? '#'} class="nav-button">
+      <span>{next.listTitle}</span>
+      <span class="material-icons">arrow_forward</span>
+    </a>
+  ) : <div />}
+</nav>

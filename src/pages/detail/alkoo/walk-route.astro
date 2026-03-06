@@ -5,6 +5,7 @@ import SectionHeader from '../../../components/SectionHeader.astro';
 import ContentSection from '../../../components/ContentSection.astro';
 import FeatureCarousel from '../../../components/FeatureCarousel.astro';
 import RelatedLinks from '../../../components/RelatedLinks.astro';
+import NavFooter from '../../../components/NavFooter.astro';
 import { alkooWorks } from '../../../data/alkoo';
 
 const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
@@ -82,14 +83,5 @@ const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
   </div>
 
   <!-- Navigation Footer -->
-  <nav class="nav-footer">
-    <a href="/alkoo" class="nav-button">
-      <span class="material-icons">arrow_back</span>
-      <span>前のページ名</span>
-    </a>
-    <a href="#" class="nav-button">
-      <span>次のページ名</span>
-      <span class="material-icons">arrow_forward</span>
-    </a>
-  </nav>
+  <NavFooter works={alkooWorks} currentId="walk-route" />
 </DetailLayout>

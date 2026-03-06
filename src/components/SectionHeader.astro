@@ -2,14 +2,25 @@
 interface Props {
   subtitle: string;
   title: string;
+  animated?: boolean;
 }
 
-const { subtitle, title } = Astro.props;
+const { subtitle, title, animated = true } = Astro.props;
+const chars = animated ? title.split('') : null;
 ---
 
-<div class="section-header">
+<div class="section-header" data-animated={animated || undefined}>
   <p class="section-subtitle">{subtitle}</p>
-  <h2 class="section-title">{title}</h2>
+  <h2 class="section-title">
+    {animated && chars ? (
+      chars.map((char, i) => (
+        <span
+          class="char"
+          style={`transition-delay: calc(var(--anim-char-slow-start) + ${i} * var(--anim-char-slow-step))`}
+        >{char === ' ' ? '\u00A0' : char}</span>
+      ))
+    ) : title}
+  </h2>
 </div>
 
 <style>
@@ -32,8 +43,39 @@ const { subtitle, title } = Astro.props;
     font-size: var(--fs-heading-lg);
   }
 
+  .char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--anim-char-slow-duration) ease, transform var(--anim-char-slow-duration) ease;
+  }
+
+  .section-title.is-visible .char {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   @media (max-width: 768px) {
     .section-header { padding: 32px 24px; }
     .section-title { font-size: 32px; }
   }
 </style>
+
+<script>
+  const observe = () => {
+    const headers = document.querySelectorAll('.section-header[data-animated]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelector('.section-title')?.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    headers.forEach(h => observer.observe(h));
+  };
+
+  observe();
+  document.addEventListener('astro:page-load', observe);
+</script>

@@ -6,6 +6,7 @@ import ContentSection from '../../../components/ContentSection.astro';
 import FeatureCarousel from '../../../components/FeatureCarousel.astro';
 import RelatedLinks from '../../../components/RelatedLinks.astro';
 import YoutubeEmbed from '../../../components/YoutubeEmbed.astro';
+import NavFooter from '../../../components/NavFooter.astro';
 import { alkooBizWorks } from '../../../data/alkoo_biz';
 
 const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
@@ -105,8 +106,8 @@ const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
 
     <ContentSection
       title='外出頻度の増加・健康を意識した行動の増加が見られた。'
-      maintext='定期的に県から利用者に向けたアンケートで定量調査を実施しています。その結果を見ると、約50%のユーザーが外出頻度が増えたと回答しています。
-      また、参加前と比べて「エレベーターやエスカレーターを使う頻度が減り、階段を使う頻度が増えた。 」と回答した方が最も多く42.7％。
+      maintext='定期的に県から利用者に向けたアンケートで定量調査を実施しています。その結果を見ると、==約50%のユーザーが外出頻度が増えたと回答しています。==
+      また、==参加前と比べて「エレベーターやエスカレーターを使う頻度が減り、階段を使う頻度が増えた。 」と回答した方が最も多く42.7％。==
       また、「自動車やバイクを利用する頻度が減り、歩く頻度が増えた。 」と回答した方は 24.7％であり、コバトン ALKOO マイレージへの参加により健康を意識した行動を取る方が増加したことが確認できた'
     />
     <FeatureCarousel images={[
@@ -122,15 +123,6 @@ const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
   ]} />
 
   <!-- Navigation Footer -->
-  <nav class="nav-footer">
-    <a href="/alkoo" class="nav-button">
-      <span class="material-icons">arrow_back</span>
-      <span>日陰ルート機能</span>
-    </a>
-    <a href="#" class="nav-button">
-      <span>散歩ルート機能</span>
-      <span class="material-icons">arrow_forward</span>
-    </a>
-  </nav>
+  <NavFooter works={alkooBizWorks} currentId="kobaton" />
 
 </DetailLayout>

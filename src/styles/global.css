@@ -10,6 +10,18 @@
     --gray-white: #fff;
     --blue: #07f;
     --blue-opacity: #0077ff1a;
+    --highlight: #F0F046;
+
+    /* Character animation */
+    /* slow: SectionHeader 向け（短いタイトル、ゆっくり） */
+    --anim-char-slow-duration: 0.6s;
+    --anim-char-slow-step: 0.08s;
+    --anim-char-slow-start: 0.2s;
+
+    /* fast: ContentHeader 向け（長文タイトル、速め） */
+    --anim-char-fast-duration: 0.5s;
+    --anim-char-fast-step: 0.06s;
+    --anim-char-fast-start: 0.1s;
 
     /* Font Families */
     --font-en: 'Inter', sans-serif;  /* 英語テキスト優先 */
