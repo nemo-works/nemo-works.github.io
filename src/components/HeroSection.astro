@@ -1,12 +1,26 @@
 ---
+const titleLines = ['シンプルで', '明快な' , 'デザインを。'];
+let charIdx = 0;
+type Token = { type: 'char'; char: string; index: number } | { type: 'br' };
+const titleTokens: Token[] = [];
+titleLines.forEach((line, lineIdx) => {
+    line.split('').forEach(char => titleTokens.push({ type: 'char', char, index: charIdx++ }));
+    if (lineIdx < titleLines.length - 1) titleTokens.push({ type: 'br' });
+});
 ---
 
 <section class="hero">
     <div class="hero-content">
         <div class="hero-text">
-            <h1 class="hero-title">明快で、<br>わかりやすい<br>デザインを。</h1>
-            <p class="hero-name">Soma Nemoto</p>
-            <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
+            <h1 class="hero-title">
+                {titleTokens.map(token =>
+                    token.type === 'br'
+                        ? <br />
+                        : <span class="char" style={`transition-delay: calc(var(--anim-char-slow-start) + ${token.index} * var(--anim-char-slow-step))`}>{token.char}</span>
+                )}
+            </h1>
+            <p class="hero-name">SOMA NEMOTO</p>
+            <p class="hero-description">シンプルで、明快な、デザインで<br>日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
         </div>
         <div class="hero-image">
             <img src="/img/index/top-icon.png" alt="Soma Nemoto">
@@ -45,22 +59,34 @@
     }
 
     .hero-title {
-        font-size: 56px;
+        font-size: 3.25vw;
         font-weight: 700;
-        line-height: 1.5;
-        letter-spacing: 2.8px;
+        line-height: 160%;
+        letter-spacing: 8%;
+    }
+
+    .char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity var(--anim-char-slow-duration) ease, transform var(--anim-char-slow-duration) ease;
+    }
+
+    .hero-title.is-visible .char {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .hero-name {
         font-family: var(--font-en);
-        font-size: 43.7px;
+        font-size: 2.75vw;
         font-weight: 700;
         line-height: 48px;
     }
 
     .hero-description {
         font-size: var(--fs-sub);
-        line-height: 32px;
+        line-height: 210%;
     }
 
     .hero-image {
@@ -126,3 +152,22 @@
         .hero-image img { width: 20vh; height: auto; }
     }
 </style>
+
+<script>
+    const observe = () => {
+        const title = document.querySelector('.hero-title');
+        if (!title) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(title);
+    };
+
+    observe();
+    document.addEventListener('astro:page-load', observe);
+</script>

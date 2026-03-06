@@ -20,8 +20,8 @@ import HeroSection from '../components/HeroSection.astro';
 
     <!-- Works Section -->
     <section class="works-section">
-        <div class="works-inner">
-        <SectionHeader subtitle="取り組んできた仕事" title="WORKS" />
+        <div class="works-inner fade-up">
+        <SectionHeader subtitle="取り組んできた仕事" title="WORKS" animated={false} />
         <div class="works-grid">
             <WorkCard
                 href="/alkoo"
@@ -65,8 +65,8 @@ import HeroSection from '../components/HeroSection.astro';
 
     <!-- Profile Section -->
     <section class="profile-section">
-        <div class="profile-container">
-            <SectionHeader subtitle="私について" title="PROFILE" />
+        <div class="profile-container fade-up">
+            <SectionHeader subtitle="私について" title="PROFILE" animated={false}/>
 
             <div class="profile-main">
                 <div class="profile-photo">
@@ -384,4 +384,23 @@ import HeroSection from '../components/HeroSection.astro';
         .profile-detail { flex-direction: column; gap: 20px; padding: 32px 24px; }
         .profile-detail-label { width: 100%; }
     }
+
 </style>
+
+<script>
+    const observeSections = () => {
+        const elements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        elements.forEach(el => observer.observe(el));
+    };
+
+    observeSections();
+    document.addEventListener('astro:page-load', observeSections);
+</script>
