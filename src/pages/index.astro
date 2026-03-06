@@ -6,6 +6,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import IconLink from '../components/IconLink.astro';
 import RelatedLinks from'../components/RelatedLinks.astro'
+import HeroSection from '../components/HeroSection.astro';
 ---
 
 <BaseLayout title="Soma Nemoto Portfolio">
@@ -15,18 +16,7 @@ import RelatedLinks from'../components/RelatedLinks.astro'
     <SiteHeader variant="menu" />
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">明快で、<br>わかりやすい<br>デザインを。</h1>
-                <p class="hero-name">Soma Nemoto</p>
-                <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
-            </div>
-            <div class="hero-image">
-                <img src="/img/index/top-icon.png" alt="Soma Nemoto">
-            </div>
-        </div>
-    </section>
+    <HeroSection />
 
     <!-- Works Section -->
     <section class="works-section">
@@ -187,70 +177,6 @@ import RelatedLinks from'../components/RelatedLinks.astro'
         font-size: 12.5px;
         color: var(--gray-icon);
         margin-top: 2px;
-    }
-
-    /* Hero Section */
-    .hero {
-        background: var(--primary-orange);
-        min-height: 1080px;
-        padding: 80px 200px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        max-width: var(--max-width);
-        display: flex;
-        gap: 20px;
-        /*padding: 23px;*/
-    }
-
-    .hero-text {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 24px;
-        color: white;
-    }
-
-    .hero-title {
-        font-size: 56px;
-        font-weight: 700;
-        line-height: 1.5;
-        letter-spacing: 2.8px;
-    }
-
-    .hero-name {
-        font-family: var(--font-en);
-        font-size: 43.7px;
-        font-weight: 700;
-        line-height: 48px;
-    }
-
-    .hero-description {
-        font-size: var(--fs-sub);
-        line-height: 32px;
-    }
-
-    .hero-image {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-
-    .hero-image img {
-        width: 338.8px;
-        height: 338.8px;
-        border-radius: 50%;
-        object-fit: cover;
     }
 
     /* Works Section */
@@ -432,7 +358,6 @@ import RelatedLinks from'../components/RelatedLinks.astro'
 
     /* Responsive */
     @media (max-width: 1440px) {
-        .hero,
         .works-section,
         .profile-section {
             padding-left: 80px;
@@ -441,15 +366,6 @@ import RelatedLinks from'../components/RelatedLinks.astro'
     }
 
     @media (max-width: 1024px) {
-        .hero-content {
-            flex-direction: column;
-            align-items: center;
-        }
-        .hero-text {
-            align-items: center;
-            text-align: center;
-        }
-        .hero-image { justify-content: center; }
         .works-grid { grid-template-columns: repeat(2, 1fr); }
         .work-placeholder { grid-column: auto; }
         .profile-main { flex-direction: column; }
@@ -463,11 +379,6 @@ import RelatedLinks from'../components/RelatedLinks.astro'
     @media (max-width: 768px) {
         .header { padding: 24px; }
         .menu-button { width: 56px; height: 56px; }
-        .hero { padding: 80px 24px 40px; min-height: auto; }
-        .hero-title { font-size: 36px; }
-        .hero-name { font-size: 32px; }
-        .hero-description { font-size: 16px; }
-        .hero-image img { width: 240px; height: 240px; }
         .works-section, .profile-section { padding: 60px 20px; }
         .works-grid { grid-template-columns: 1fr; }
         .profile-detail { flex-direction: column; gap: 20px; padding: 32px 24px; }

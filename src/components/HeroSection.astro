@@ -1,0 +1,128 @@
+---
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">明快で、<br>わかりやすい<br>デザインを。</h1>
+            <p class="hero-name">Soma Nemoto</p>
+            <p class="hero-description">UIデザイナー 根本 壮馬です。<br>明快で、わかりやすく、日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
+        </div>
+        <div class="hero-image">
+            <img src="/img/index/top-icon.png" alt="Soma Nemoto">
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        background: #FCFAF2;
+        min-height: 920px;
+        padding: 80px 200px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: var(--max-width);
+        display: flex;
+        gap: 20px;
+    }
+
+    .hero-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 24px;
+        color: var(--gray-main);
+    }
+
+    .hero-title {
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: 2.8px;
+    }
+
+    .hero-name {
+        font-family: var(--font-en);
+        font-size: 43.7px;
+        font-weight: 700;
+        line-height: 48px;
+    }
+
+    .hero-description {
+        font-size: var(--fs-sub);
+        line-height: 32px;
+    }
+
+    .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+    }
+
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 1440px) {
+        .hero {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .hero-content {
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-text {
+            align-items: center;
+            text-align: center;
+        }
+        .hero-image { justify-content: center; }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            padding: 100px 24px 40px;
+            min-height: 100vh;
+            align-items: stretch;
+        }
+        .hero-content {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .hero-text {
+            flex: 0 0 60%;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        .hero-image {
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            align-items: end;
+            flex-direction: row-reverse;
+        }
+        .hero-title { font-size: 36px; }
+        .hero-name { font-size: 32px; }
+        .hero-description { font-size: 16px; }
+        .hero-image img { width: 20vh; height: auto; }
+    }
+</style>
