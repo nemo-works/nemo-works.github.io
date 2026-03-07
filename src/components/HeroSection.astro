@@ -101,6 +101,17 @@ titleLines.forEach((line, lineIdx) => {
         height: 280px;
         border-radius: 50%;
         object-fit: cover;
+        cursor: pointer;
+    }
+
+    .hero-image img.wiggle {
+        animation: wiggle 0.5s ease;
+    }
+
+    @keyframes wiggle {
+        0%   { transform: rotate(0deg); }
+        30%  { transform: rotate(-10deg); }
+        100% { transform: rotate(0deg); }
     }
 
     @media (max-width: 1440px) {
@@ -149,7 +160,7 @@ titleLines.forEach((line, lineIdx) => {
         .hero-title { font-size: 36px; }
         .hero-name { font-size: 32px; }
         .hero-description { font-size: 16px; }
-        .hero-image img { width: 20vh; height: auto; }
+        .hero-image img { width: 20svh; height: auto; }
     }
 </style>
 
@@ -170,4 +181,14 @@ titleLines.forEach((line, lineIdx) => {
 
     observe();
     document.addEventListener('astro:page-load', observe);
+
+    const heroImg = document.querySelector<HTMLImageElement>('.hero-image img');
+    heroImg?.addEventListener('click', () => {
+        heroImg.classList.remove('wiggle');
+        void heroImg.offsetWidth;
+        heroImg.classList.add('wiggle');
+    });
+    heroImg?.addEventListener('animationend', () => {
+        heroImg.classList.remove('wiggle');
+    });
 </script>
