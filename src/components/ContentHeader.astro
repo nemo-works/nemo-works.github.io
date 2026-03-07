@@ -197,7 +197,7 @@ const titleLines = title.split('\n');
 
   .info-divider {
     flex: 1;
-    height: 2px;
+    height: 1px;
     background: var(--gray-divider);
   }
 
@@ -275,13 +275,33 @@ const titleLines = title.split('\n');
 
     .description {
       font-size: var(--fs-body);
+      line-height: 1.8;
+      color: var(--gray-main);
+    }
+
+    .info-block {
+      gap: 30px;
+    }
+
+    .info-item {
+      gap: 10px;
+    }
+
+    .info-content {
+      font-size: var(--fs-body);
+      line-height: 1.8;
+      color: var(--gray-main);
+    }
+
+    .info-content-wrap {
+    gap: 4px;
     }
 
     .info-item,
     .info-item:first-child,
     .info-item:last-child {
-      padding-left: 24px;
-      padding-right: 24px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
 
     .image-block.layout-multi {
