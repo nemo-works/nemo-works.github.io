@@ -1,77 +1,91 @@
 :root {
-    --primary-orange: #e17f2c;
-    --primary-opacity: #e1802c33;
-    --gray-main: #333;
-    --gray-sub: #8b8b8b;
-    --gray-icon: #7d7d7d;
-    --gray-divider: #e0e0e0;
-    --gray-background: #FCFAF2;
-    --black-opacity: #0000004d;
-    --gray-white: #fff;
-    --blue: #07f;
-    --blue-opacity: #0077ff1a;
-    --highlight: #F0F046;
+  --primary-orange: #e17f2c;
+  --primary-opacity: #e1802c33;
+  --gray-main: #333;
+  --gray-sub: #8b8b8b;
+  --gray-icon: #7d7d7d;
+  --gray-divider: #e0e0e0;
+  --gray-background: #fcfaf2;
+  --black-opacity: #0000004d;
+  --gray-white: #fff;
+  --blue: #07f;
+  --blue-opacity: #0077ff1a;
+  --highlight: #f0f046;
 
-    /* Character animation */
-    /* slow: SectionHeader 向け（短いタイトル、ゆっくり） */
-    --anim-char-slow-duration: 0.6s;
-    --anim-char-slow-step: 0.08s;
-    --anim-char-slow-start: 0.2s;
+  /* Character animation */
+  /* slow: SectionHeader 向け（短いタイトル、ゆっくり） */
+  --anim-char-slow-duration: 0.6s;
+  --anim-char-slow-step: 0.08s;
+  --anim-char-slow-start: 0.2s;
 
-    /* fast: ContentHeader 向け（長文タイトル、速め） */
-    --anim-char-fast-duration: 0.5s;
-    --anim-char-fast-step: 0.06s;
-    --anim-char-fast-start: 0.1s;
+  /* fast: ContentHeader 向け（長文タイトル、速め） */
+  --anim-char-fast-duration: 0.5s;
+  --anim-char-fast-step: 0.06s;
+  --anim-char-fast-start: 0.1s;
 
-    /* Font Families */
-    --font-en: 'Inter', sans-serif;  /* 英語テキスト優先 */
+  /* Font Families */
+  --font-en: "Inter", sans-serif; /* 英語テキスト優先 */
 
-    /* Layout */
-    --max-width: 1480px;
+  /* Layout */
+  --max-width: 1480px;
 
-    /* Typography */
-    --fs-body: 1rem;       /* 16px */
-    --fs-read: 1.125rem;     /* 18px */
-    --fs-tag: 0.875rem;     /* 14px */
-    --fs-sub: 1.25rem;     /* 20px */
-    --fs-heading-sm: 1.75rem;  /* 28px */
-    --fs-heading-md: 2.5rem;    /*  */
-    --fs-heading-lg: 3.5rem;    /* 56px */
+  /* Typography */
+  --fs-body: 1rem; /* 16px */
+  --fs-read: 1.125rem; /* 18px */
+  --fs-tag: 0.875rem; /* 14px */
+  --fs-sub: 1.25rem; /* 20px */
+  --fs-heading-sm: 1.75rem; /* 28px */
+  --fs-heading-md: 2.5rem; /*  */
+  --fs-heading-lg: 3.5rem; /* 56px */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fs-body: 0.875rem; /* 14px */
+    --fs-read: 1rem; /* 16px */
+    --fs-tag: 0.75rem; /* 12px */
+    --fs-sub: 1rem; /* 16px */
+    --fs-heading-sm: 1.25rem; /* 20px */
+    --fs-heading-md: 1.75rem; /* 28px */
+    --fs-heading-lg: 2.25rem; /* 36px */
+  }
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 16px; /* 1rem の基準 */
-    scroll-behavior: smooth;
+  font-size: 16px; /* 1rem の基準 */
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Zen Kaku Gothic New', 'Inter', sans-serif;
-    color: var(--gray-main);
-    background: var(--gray-white);
-    overflow-x: hidden;
+  font-family: "Zen Kaku Gothic New", "Inter", sans-serif;
+  color: var(--gray-main);
+  background: var(--gray-white);
+  overflow-x: hidden;
 }
 
 h2 {
-    font-size: var(--fs-heading-sm);
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--gray-main);
+  font-size: var(--fs-heading-sm);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--gray-main);
 }
 
 /* Scroll animation */
 .fade-up {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .fade-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }

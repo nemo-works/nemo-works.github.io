@@ -101,14 +101,47 @@ const Tag = href ? 'a' : 'div';
   }
 
   @media (max-width: 1024px) {
-    .work-item { flex-direction: column; }
-    .work-thumbnail { width: 100%; max-width: 400px; }
+    .work-item { flex-direction: column; padding: 40px; }
+    .work-thumbnail { width: 100%; height: auto;}
   }
 
   @media (max-width: 768px) {
-    .work-item { padding: 24px; }
-    .work-thumbnail { height: 120px; }
-    .work-title { font-size: var(--fs-sub); }
-    .work-description { font-size: 16px; }
+
+  .work-item {
+    background: var(--gray-white);
+    border-top: 1px solid var(--gray-divider);
+    border-bottom: 1px solid var(--gray-divider);
+    padding: 20px 20px;
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+  .work-thumbnail {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .work-title {
+    font-size: var(--fs-heading-sm);
+  }
+  .work-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 16px;
+  }
+  .work-arrow {
+    font-size: 24px;
+    color: var(--gray-icon);
+    transition: color 0.3s ease;
+    align-self: start;
+  }
+  .work-description {
+    font-size: var(--fs-body);
+  }
   }
 </style>

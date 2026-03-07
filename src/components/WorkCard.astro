@@ -63,7 +63,7 @@ const { href, image, imageAlt, category, title } = Astro.props;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 16px;
+        gap: 8px;
     }
 
     .work-text {
@@ -91,5 +91,12 @@ const { href, image, imageAlt, category, title } = Astro.props;
         font-size: 40px;
         color: var(--gray-sub);
         transition: color 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+        .work-card {
+            padding: 20px;
+            gap:20px
+        }
     }
 </style>

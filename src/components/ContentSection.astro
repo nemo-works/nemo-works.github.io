@@ -89,6 +89,24 @@ function parseHighlight(text: string) {
     .content-section.is-visible .highlight {
         background-size: 100% 100%;
     }
+
+    @media (max-width: 768px) {
+        .content-section {
+            padding: 30px 30px;
+        }
+
+        .content-section-title {
+            font-size: var(--fs-heading-sm);
+            padding-bottom: 20px;
+        }
+
+        .content-section-main {
+            font-size: var(--fs-read);
+            line-height: 2;
+        }
+
+    }
+
 </style>
 
 <script>
