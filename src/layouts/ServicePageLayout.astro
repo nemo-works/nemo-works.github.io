@@ -14,14 +14,16 @@ interface Props {
   subtitle?: string;
   title: string;
   description: string;
+  tags?: string[];
   period: string;
   tasks: string[];
   members: string[];
+  thoughtBubble?: string;
   images?: ImageItem[];
   imageLayout?: 'single' | 'multi';
 }
 
-const { pageTitle, subtitle, title, description, period, tasks, members, images, imageLayout } = Astro.props;
+const { pageTitle, subtitle, title, description, tags, period, tasks, members, thoughtBubble, images, imageLayout } = Astro.props;
 ---
 
 <BaseLayout title={pageTitle} bodyBg="var(--gray-background)">
@@ -36,9 +38,11 @@ const { pageTitle, subtitle, title, description, period, tasks, members, images,
                 subtitle={subtitle}
                 title={title}
                 description={description}
+                tags={tags}
                 period={period}
                 tasks={tasks}
                 members={members}
+                thoughtBubble={thoughtBubble}
                 images={images}
                 imageLayout={imageLayout}
             />

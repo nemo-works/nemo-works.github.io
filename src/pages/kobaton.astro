@@ -1,0 +1,169 @@
+---
+import DetailLayout from '../layouts/DetailLayout.astro';
+import ContentHeader from '../components/ContentHeader.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ContentSection from '../components/ContentSection.astro';
+import FeatureCarousel from '../components/FeatureCarousel.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import YoutubeEmbed from '../components/YoutubeEmbed.astro';
+
+const work = {
+  tags: ["UIUX", "グラフィックデザイン", "顧客折衝", "新規サービス立ち上げ"],
+};
+---
+
+<DetailLayout
+  title="コバトンALKOOマイレージ"
+  backHref="/"
+  breadcrumb={[
+    { label: "TOP", href: "/" },
+    { label: "コバトンALKOOマイレージ" },
+  ]}
+>
+
+  <ContentHeader
+    variant="detail"
+    title="サービス初となる自治体公式サービス。\nALKOOのアップデートでサービスもアップデートされるWin-Winな開発・運用で市民の健康増進活動をサポート。"
+    description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
+    tags={work.tags}
+    period="2023年7月〜2024年1月"
+    tasks={["企画書作成協力","顧客折衝","UI/UX設計","告知物デザイン作成","販促物作成"]}
+    members={["PM…1名","セールス…2名","エンジニア…5名", "デザイナー…1名"]}
+    thoughtBubble='リードデザイナーを担当しました'
+    images={[{ src: "/img/kobaton/kv.png", alt: "コバトンALKOOマイレージキービジュアル" }]}
+    imageLayout="single"
+  />
+
+  <!-- 概要 -->
+   <ContentSection
+        title='サービス概要'
+        maintext='埼玉県の健康増進事業。\nALKOOで提供している記録機能をはじめ散歩ルート検索やコース紹介、スタンプラリーなどのウォーキングに特化した機能が評価され採択。'
+    />
+
+  <div class="sections-list">
+    <SectionHeader subtitle="開発経緯と課題" title="BACKGROUND" />
+    
+    <ContentSection
+      title='公募実施時の課題'
+      maintext='公募を実施した段階で、すでにアプリの提供を行っていたのですが、アプリを改善しようにもアップデートや変更のたびにコストがかかってしまうという課題があり、スピード感とコスト面の２つの課題が顕著になっていました。
+      そこで、==ALKOO内に専用モードを用意し、アプリのアップデートが本サービスの改善につながるサービスとして提供する方針==になりました。
+      '
+    />
+
+    <!-- 開発経緯 -->
+    <ContentSection
+        title='事業初となる公募入札'
+        maintext='法人向けのセールスサイトに埼玉県からの引き合いがあり、内容を確認したところ公募案件がこれから開始するため、調査しているというお話をいただきこの案件は開始しました。
+        ==入札の段階からプロジェクトに参加し、セールスチームと綿密に打ち合わせを行い、デザイナーとして事前にサービスイメージを見える化することで、案件獲得に助力しました。==
+        これまでに行ってきたサービス改善や、ウォーキングに特化したアップデートの内容や開発基盤が評価され、無事、採択に至りました。
+        '
+    />
+    </div>
+    
+    <div class="sections-list">
+
+    <SectionHeader subtitle="設計・製作の道のり" title="DESIGN" />
+
+    <!-- UI/UX検討 -->
+     <ContentSection
+        title='はじめてづくしの新規サービス開発。まずは、ユーザー情報管理ツールから。'
+        maintext='==これまで自分は既存のサービスにアサインされた経験しかなく、新規サービスのデザインは初でした。==
+        進め方に不安がある中で、サービス以外にも作るものはたくさんあり、まずはユーザーの受け皿であり、セキュリティ的にも最初に固めておきたい「ユーザー情報管理ツール」の開発に着手。並行してロゴデザインの作業も進め、サービスに絶対に必要なものからデザインを行っていきました。
+        この期間は、グラフィック作業など世界観を模索する抽象的な作業と、エンジニアとDB設計について議論する論理的な作業を行き来したため、考えの切り替えに苦労することもありました。
+        '
+    />
+
+    <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/kobaton/img_kobaton_cap001.jpg", alt: "コバトンALKOOマイレージ | ロゴ", caption: "採択されたロゴ。「コバトンと晴れの日を歩く」というコンセプトで作成した。" },
+      { src: "/img/kobaton/img_kobaton_cap001-02.png", alt: "担当領域", caption: "ロゴとユーザー情報管理ツールのデザインを並行。世界観を模索しながら立ち上げに向けて準備を進めた。"}
+    ]} />
+
+    <ContentSection
+      title='「コバトンと歩けばいつだって晴れ気分」なサービスをロゴで表現。'
+      maintext='最初から「コバトンALKOOマイレージ」というサービス名が決まっていたため、「コバトン」を前に出しつつ、「ALKOO」のブランディングを守ることを自分の中で課題としてもちつつ、ALKOOに最大限配慮したシンプルで汎用性の高いロゴ案と、ゲームっぽいロゴ案と、3案のデザインを作成したところ、==「コバトンと「晴れの日」を歩く」というコンセプトの、青空の元を楽しく歩くイメージが湧くロゴが採択されました。==
+      '
+    />
+
+    <!-- Feature Image -->
+    <FeatureCarousel images={[
+      { src: "/img/kobaton/img_kobaton_cap002.jpg", alt: "コバトンALKOOマイレージ | UI", caption: "実際に制作したUIの一部。空色のプライマリーカラーでコバトンと歩く晴れの日をイメージ。" },
+    ]} />
+
+    <ContentSection
+      title='サービスのUIにも、コバトンを。'
+      maintext='サービスに登録すると、ALKOOトップにコバトンマイレージのカードと、バナーが表示されます。
+      バナーの先には「コバトンALKOOマイレージ」の専用ページがあり、ホーム画面にはコバトンマイレージの表示とお知らせがメイン機能になっていて、各機能をタブでわけ、抽選タブ、ランキングタブ、お知らせ、メニューの5タブ構成で、コバトンALKOOマイレージの全ての情報にアクセスできるようになっています。
+      専用モードのホーム画面にも世界観を与えるため、==53種類以上のコバトンイラストがランダムに表示する仕様で、シンプルながら開くたびに新しいコバトンに出会える可愛く世界観を提供しています。==
+      '
+    />
+
+  </div>
+
+  <div class="sections-list">
+  <SectionHeader subtitle="普及に向けた活動" title="PROMOTION"/>
+
+    <ContentSection
+        title='幅広い市民のために、できることはなるべくやる。'
+        maintext='先述のイベント参加講座の影響もあり、利用者の年齢層も理解していたため、==参加方法をまとめた動画も作成。==
+        参加方法の案内動画は、アプリのダウンロードから始まっています。そのため、リテラシーが低い方でも順番に従っていけばイベントに参加できるような映像を目指して制作を行いました。'
+    />
+    <!-- 使い方動画 -->
+    <YoutubeEmbed videoId="-D2yIK-orzY" title="コバトンALKOOマイレージ" />
+    <ContentSection
+        title='チラシや、のぼり。集客ツールも作成し、県とチーム一丸で参加者獲得に邁進。'
+        maintext='受付窓口に置くミニのぼりやイベント実施中に使用するのぼりの作成も行いました。また、主要なユーザー層が高齢の方が中心であることも理解していた県の方から、コールセンターの電話番号が確認できるマグネットステッカーの作成依頼もいただき、ユーザー層特有の好みも理解しました。
+        '
+    />
+
+    <FeatureCarousel images={[
+      { src: "/img/kobaton/img_kobaton_cap003.jpg", alt: "のぼり・ミニのぼり・マグネットステッカー", caption: "のぼりやマグネットステッカーを作成し、サービスの周知に活用しました" },
+      { src: "/img/kobaton/img_kobaton_cap003-02.jpg", alt:"トートバッグ", caption:"イベント参加講座向けに制作したトートバッグが好評でどの会場も満員との報告を受けました。"}
+    ]} />
+  </div>
+
+  <!-- 反響 -->
+  <div class="sections-list">
+    <SectionHeader subtitle="反響" title="OUTCOME"/>
+
+    <!-- イベント講座 -->
+    <ContentSection
+        title='無事リリース！イベント参加講座でユーザーの実態を真に理解…。'
+        maintext='2023年1月に無事にサービスをリリースしました。リリース後にアンケートやユーザー情報を見たところ、利用者の半数が60代以上の高齢者層でした。
+        採択当初から決まっていたイベント参加講座を県内53ヶ所で実施。そのうちのいくつかのイベントに自分も参加し本イベントの参加登録までをサポートしました。
+        一部の方は、そもそもメールアドレスを持っていなかったり、カルーセルバナーの仕様を理解できなかったり、極端にフォントサイズを大きくしている方も多くレイアウトの崩れも想定以上でした。==この機会のおかげで、利用者の実態を深く理解し、自分の設計・ユーザー理解の甘さを痛感しました。==
+        リリース後ではありますが、==問題が出た箇所は修正を行い、少しでも改善できる箇所はカバーするよう心がけました。==
+        '
+    />
+
+    <ContentSection
+      title='リリースから2年。外出頻度の増加・健康を意識した行動の増加が見られた。'
+      maintext='リリース後も定期的に県から利用者に向けたアンケートで定量調査を実施しています。
+      その結果を見ると、==約50%のユーザーが外出頻度が増えたと回答。==また、参加前と比べて==「エレベーターやエスカレーターを使う頻度が減り、階段を使う頻度が増えた。 」と回答した方が最も多く42.7％。==
+      他にも「自動車やバイクを利用する頻度が減り、歩く頻度が増えた。 」と回答した方は 24.7％など良い傾向の回答が多く見られ、自分が作ったサービスが少しでもユーザーの習慣を良い方向に導いていることがわかり非常に嬉しかったです。'
+    />
+
+    <FeatureCarousel images={[
+      { src: "/img/kobaton/img_kobaton_cap004.jpg", alt: "アンケートの結果、外出頻度の増加・健康を意識した行動の増加が見られた。", caption: "外出頻度の増加・健康を意識した行動の増加が見られた。" },
+      { src: "/img/kobaton/img_kobaton_cap004-02.jpg", alt: "運動を続ける方が大幅に増加。毎日アプリを見る人が6割を超える結果も。", caption: "運動を続ける方が大幅に増加。毎日アプリを見る人が6割を超える結果も。" }
+    ]} />
+
+  </div>
+
+  <!-- 関連リンク -->
+  <RelatedLinks links={[
+    { href: "https://kobaton-alkoo.navitime.co.jp/", label: "コバトンALKOOマイレージ | ポータルサイト" },
+    { href: "https://www.pref.saitama.lg.jp/documents/207979/sankasya_anketo202510.pdf", label: "令和7年度「コバトンALKOOマイレージ」参加者アンケート結果(PDF)" },
+    { href: "https://corporate.navitime.co.jp/topics/pr/202401/16_5691.html", label: "株式会社ナビタイムジャパン | 埼玉県健康増進事業「コバトンALKOOマイレージ」の開発に技術協力" },
+  ]} />
+
+  <!-- Navigation Footer -->
+  <nav class="nav-footer">
+    <a href="/" class="nav-button">
+      <span class="material-icons">arrow_back</span>
+      <span>TOP</span>
+    </a>
+    <div />
+  </nav>
+
+</DetailLayout>

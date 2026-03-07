@@ -38,27 +38,33 @@ import HeroSection from '../components/HeroSection.astro';
                 title="駅からハイキング"
             />
             <WorkCard
-                href="/alkoo_biz"
+                href="/kobaton"
                 image="/img/index/Container/containts-03.png"
+                imageAlt="コバトンALKOOマイレージ"
+                category="クライアントワーク/サービス立ち上げ"
+                title="コバトンALKOOマイレージ"
+            />
+            <WorkCard
+                href="/alkoo_biz"
+                image="/img/index/Container/containts-04.png"
                 imageAlt="ALKOO 法人サービス"
                 category="クライアントワーク/サービス立ち上げ"
                 title="ALKOO 法人サービス"
             />
             <WorkCard
                 href="/sugotoku"
-                image="/img/index/Container/containts-04.png"
+                image="/img/index/Container/containts-05.png"
                 imageAlt="dバリューパス向けコンテンツ"
                 category="自社サービス運用/ナビゲーションサービス"
                 title="dバリューパス向けコンテンツ"
             />
             <WorkCard
                 href="#"
-                image="/img/index/Container/containts-05.png"
+                image="/img/index/Container/containts-06.png"
                 imageAlt="社内デザイン力の底上げ"
                 category="運用・改善"
                 title="社内デザイン力の底上げ"
             />
-            <div class="work-placeholder"></div>
         </div>
         </div>
     </section>
@@ -188,19 +194,13 @@ import HeroSection from '../components/HeroSection.astro';
     .works-inner {
         max-width: var(--max-width);
         margin: 0 auto;
+        border: 1px solid var(--gray-divider);
     }
 
     .works-grid {
         background: var(--gray-white);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    .work-placeholder {
-        grid-column: 3;
-        grid-row: 2;
-        background: var(--gray-white);
-        border: 1px solid var(--gray-divider);
     }
 
     /* Profile Section */

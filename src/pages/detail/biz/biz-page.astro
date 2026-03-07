@@ -9,7 +9,7 @@ import YoutubeEmbed from '../../../components/YoutubeEmbed.astro';
 import NavFooter from '../../../components/NavFooter.astro';
 import { alkooBizWorks } from '../../../data/alkoo_biz';
 
-const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
+const work = alkooBizWorks.find(w => w.id === 'biz-page')!;
 ---
 
 <DetailLayout
@@ -24,12 +24,13 @@ const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
 
   <ContentHeader
     variant="detail"
-    title="売上の大黒柱である法人商材紹介サイトの製作。デザイン作成から運用まで担当。伝えきれていなかった商材、過去の実績をまとめて見える化。"
+    title="売上の大黒柱である法人商材紹介サイトの製作。\nデザイン作成から運用まで担当。伝えきれていなかった商材、過去の実績をまとめて見える化。"
     description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
     tags={work.tags}
-    period="2022年12月〜2023年1月"
+    period="2022年12月〜2023年2月"
     tasks={["情報設計","レイアウト設計","デザイン作成","コンテンツ更新"]}
     members={["PM…1名","セールス…2名","エンジニア…2名", "デザイナー…1名"]}
+    thoughtBubble="リードデザイナーを担当しました"
     images={[{ src: "/img/biz-pages/img_contents_alkoobiz_pages.png", alt: "法人商材サイト" }]}
     imageLayout="single"
   />
@@ -46,58 +47,23 @@ const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
     <!-- 開発経緯 -->
     <ContentSection
         title='増えすぎた商材、取り組んだ案件、まとまったページがない…'
-        maintext='法人向けのセールスサイトに埼玉県からの引き合いがあり、内容を確認したところ公募案件がこれから開始するため、調査しているというお話をいただきこの案件は開始しました。
-        セールスチームとの綿密に打ち合わせを行い、リリース前からサービスイメージの作成、機能面や自社サービスの強みが伝わるような資料作成で案件獲得に助力しました。
+        maintext='ALKOO法人パッケージが始まった当初は健康経営支援に向けたパッケージ販売が主流でした。
+        アプリの機能が増えるにつれ、法人のお客様からの要望をいただくこともあり、次第にパッケージとして提供できるものが増え続け、==2023年には6つのパッケージに拡大、ですが、その全貌をユーザーにはお伝えしきれていない状況でした。==
         '
     />
 
     <ContentSection
-        title='公募実施時の課題'
-        maintext='公募を実施した段階で、すでに同様のアプリの提供を行っていたのですが、アップデートのスピード感とコスト面の二つの課題が顕著になっていました。
-        そこで、今回の公募ではアプリ内に埼玉県専用モードを作成し、そちらにログインしていただくことで、ALKOOで提供している有料機能をはじめコバトンALKOOマイレージ専用のサービスも受けれるという構成になりました。
+        title='LP製作を主導'
+        maintext='ALKOOで取り扱っている6つの商材（健康経営支援パッケージ、イベントパッケージ、コース掲載、スタンプラリー、ALKOO CONNECT(API連携)、OEM製作）をはじめ、過去の事例のうち公開が可能なものがあるかを整理。
+        各商材で伝えたいこと、他との優位性のある箇所など、==miro上でコンテンツを洗い出し、セールス・PM・エンジニアとの定期MTGで整理を行い、LPのワイヤーフレーム設計・叩き台の製作を進めました。==
         '
     />
 
-    <!-- UI/UX検討 -->
-     <ContentSection
-        title='サービスに必要なものを全て作る'
-        maintext='採択当初、先方と打ち合わせをしていた専用モードの仕様はかなりシンプルで、歩数に応じたマイレージ配布、マイレージを使った抽選、歩数ランキング程度のもので、かなりシンプルな構成になる予定でした。
-        ですが、実態としては、ユーザー情報管理ツールの開発も必要となったため、BFF設計から参画し管理ツールの作成も行うことになりました。'
-    />
-    
     <!-- Feature Image -->
     <FeatureCarousel images={[
-      { src: "/img/shade-route/img_shade_route_cap001@2x.png", alt: "UI・仕様上の工夫" },
+      { src: "/img/biz-pages/img_contents_alkoobiz_pages_cap001.png", alt: "製作の流れ", caption: "上流工程から参加し、LP製作を主導" },
     ]} />
-  </div>
 
-  <div class="sections-list">
-  <SectionHeader subtitle="普及に向けた活動" title="PROMOTION"/>
-
-    <!-- イベント講座 -->
-    <ContentSection
-        title='イベント参加講座でユーザーのリテラシーを理解'
-        maintext='アンケートやユーザー情報を見たところ、利用者の半数が60代以上の高齢者層でした。
-        採択当初から決まっていたイベント参加講座を県内53ヶ所で実施。そのうちのいくつかのイベントに自分も参加し、本イベントの参加登録までをサポートしました。利用者のリテラシーを深く理解する機会になりました。
-        '
-    />
-    <ContentSection
-        title='幅広い市民のために、できることはなるべくやる。'
-        maintext='先述のイベント参加講座の影響もあり、利用者の年齢層も理解していたため、参加方法をまとめた動画の作成を行うことになりました。
-        参加方法の案内動画は、アプリのダウンロードから始まっています。そのため、リテラシーが低い方でも順番に従っていけばイベントに参加できるような映像を目指して制作を行いました。'
-    />
-    <!-- 使い方動画 -->
-    <YoutubeEmbed videoId="-D2yIK-orzY" title="コバトンALKOOマイレージ" />
-    <ContentSection
-        title='チラシや、のぼり。集客ツール作成にも尽力'
-        maintext='県の方のご提案で、受付窓口などに本イベントの参加を促進するミニのぼりやイベント実施中に使用するのぼりの作成も行いました。
-        また、主要なユーザー層が高齢の方が中心であることも理解していたため、コールセンターの電話番号が確認できるマグネットステッカーも作成。
-        集客ツールの作成にも尽力しました。
-        '
-    />
-    <FeatureCarousel images={[
-      { src: "/img/kobaton/img_kobaton_cap002.jpg", alt: "UI・仕様上の工夫", caption: "のぼりやマグネットステッカーを作成し、サービスの周知に活用しました" },
-    ]} />
   </div>
 
   <!-- 反響 -->
@@ -105,21 +71,24 @@ const work = alkooBizWorks.find(w => w.id === 'kobaton')!;
     <SectionHeader subtitle="反響" title="OUTCOME"/>
 
     <ContentSection
-      title='外出頻度の増加・健康を意識した行動の増加が見られた。'
-      maintext='定期的に県から利用者に向けたアンケートで定量調査を実施しています。その結果を見ると、==約50%のユーザーが外出頻度が増えたと回答しています。==
-      また、==参加前と比べて「エレベーターやエスカレーターを使う頻度が減り、階段を使う頻度が増えた。 」と回答した方が最も多く42.7％。==
-      また、「自動車やバイクを利用する頻度が減り、歩く頻度が増えた。 」と回答した方は 24.7％であり、コバトン ALKOO マイレージへの参加により健康を意識した行動を取る方が増加したことが確認できた'
+      title='自治体やアップデートに関連した引き合いの増加。'
+      maintext='サイトが整備されていなかった、2022年ごろはコロナ禍の影響もあったため健康経営施策の引き合いしかありませんでした。
+      サイトをリニューアルし、事例、商材を定期的に更新、詳細に伝えるようになってから==自治体の方の引き合いや日陰ルートなどの関連アップデートを見た方からの引き合いが増加。==正しく自分たちの活動を伝えられるようになりました。'
     />
+
     <FeatureCarousel images={[
       { src: "/img/kobaton/img_kobaton_cap003.jpg", alt: "アンケートの結果、外出頻度の増加・健康を意識した行動の増加が見られた。", caption: "外出頻度の増加・健康を意識した行動の増加が見られた。" },
     ]} />
+
+    <ContentSection
+      title='運用・コンテンツ更新でSEO向上'
+      maintext=''
+    />
   </div>
 
   <!-- 関連リンク -->
   <RelatedLinks links={[
-    { href: "https://kobaton-alkoo.navitime.co.jp/", label: "コバトンALKOOマイレージ | ポータルサイト" },
-    { href: "https://www.pref.saitama.lg.jp/documents/207979/sankasya_anketo202510.pdf", label: "令和7年度「コバトンALKOOマイレージ」参加者アンケート結果(PDF)" },
-    { href: "https://corporate.navitime.co.jp/topics/pr/202401/16_5691.html", label: "株式会社ナビタイムジャパン | 埼玉県健康増進事業「コバトンALKOOマイレージ」の開発に技術協力" },
+    { href: "https://www.navitime.co.jp/healthcare/", label: "ナビタイムの健康経営・地域周遊支援パッケージ | ALKOO for Business " },
   ]} />
 
   <!-- Navigation Footer -->
