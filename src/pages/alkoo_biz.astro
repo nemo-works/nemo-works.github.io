@@ -14,6 +14,10 @@ import { alkooBizWorks } from '../data/alkoo_biz';
     members={["PM…1名","エンジニア…4名", "デザイナー…1名"]}
     images={[{ src: "/img/alkoo-biz/kv.jpg", alt: "ALKOO Features" }]}
     imageLayout="single"
+    breadcrumb={[
+        { label: "HOME", href: "/" },
+        { label: "ALKOO 法人案件" }
+    ]}
 >
     {alkooBizWorks.map(work => (
         <WorkItem

@@ -15,6 +15,10 @@ import { alkooWorks } from '../data/alkoo';
     members={["PM…1名", "エンジニア…2~8名", "デザイナー…1~3名"]}
     images={[{ src: "/img/alkoo-top/kv.png", alt: "ALKOO Features" }]}
     imageLayout="single"
+    breadcrumb={[
+        { label: "HOME", href: "/" },
+        { label: "ALKOO by NAVITIME" }
+    ]}
 >
     {alkooWorks.map(work => (
         <WorkItem

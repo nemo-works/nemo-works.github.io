@@ -32,28 +32,31 @@ const { variant, backHref = '/', logoDark = true } = Astro.props;
     top: 0;
     left: 0;
     right: 0;
-    padding: 20px;
+    padding: 0;
     z-index: 1000;
-    pointer-events: none;
+    pointer-events: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    background: var(--gray-background);
+    border-bottom: 1px solid var(--gray-divider);
     transition: transform 0.3s ease;
   }
 
-  /* PC: variantに応じてボタンを切り替え */
+  /* variantに応じてボタンを切り替え */
   .site-header--menu { justify-content: flex-end; }
   .site-header--menu .back-button { display: none; }
-  .site-header--back .menu-button { display: none; }
+  .site-header--back .menu-button { display: flex; }
 
   .header-button {
     pointer-events: auto;
-    background: var(--gray-white);
+    background: transparent;
     font-family: var(--font-en);
     font-weight: 500;
-    width: 56px;
-    height: 56px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,17 +64,21 @@ const { variant, backHref = '/', logoDark = true } = Astro.props;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
+    border-right: 1px solid var(--gray-divider);
+    border-left: 1px solid var(--gray-divider);
+    padding: 12px 16px;
+    gap: 2px;
     text-decoration: none;
     color: inherit;
   }
 
   .header-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transform: none;
+    box-shadow: none;
   }
 
   .header-button .material-icons {
-    font-size: 32px;
+    font-size: 24px;
     color: var(--gray-icon);
   }
 
@@ -80,7 +87,7 @@ const { variant, backHref = '/', logoDark = true } = Astro.props;
     color: var(--gray-icon);
   }
 
-  /* ロゴ: 中央固定 */
+  /* ロゴ: 非表示 */
   .header-logo {
     display: none;
   }
@@ -90,40 +97,6 @@ const { variant, backHref = '/', logoDark = true } = Astro.props;
 
   .site-header--hidden {
     transform: translateY(-100%);
-  }
-
-  @media (max-width: 768px) {
-    .site-header {
-      padding: 0;
-      background: var(--gray-background);
-      justify-content: space-between;
-      pointer-events: auto;
-      border-bottom: 1px solid var(--gray-divider);
-    }
-
-    /* SP: backページではmenuも表示、menuページはmenuを右端に */
-    .site-header--back .menu-button { display: flex; }
-    .site-header--menu { justify-content: flex-end; }
-
-    .header-button {
-      width: auto;
-      height: auto;
-      background: transparent;
-      box-shadow: none;
-      border-radius: 0;
-      padding: 12px 16px;
-      gap: 2px;
-      border-right: 1px solid var(--gray-divider);
-      border-left: 1px solid var(--gray-divider);
-    }
-
-    .header-button:hover {
-      transform: none;
-      box-shadow: none;
-    }
-
-    .header-button .material-icons { font-size: 24px; }
-    .header-button span:last-child { font-size: 12px; }
   }
 </style>
 

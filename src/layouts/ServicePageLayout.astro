@@ -9,6 +9,11 @@ interface ImageItem {
   alt: string;
 }
 
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
 interface Props {
   pageTitle: string;
   subtitle?: string;
@@ -21,14 +26,34 @@ interface Props {
   thoughtBubble?: string;
   images?: ImageItem[];
   imageLayout?: 'single' | 'multi';
+  breadcrumb?: BreadcrumbItem[];
 }
 
-const { pageTitle, subtitle, title, description, tags, period, tasks, members, thoughtBubble, images, imageLayout } = Astro.props;
+const { pageTitle, subtitle, title, description, tags, period, tasks, members, thoughtBubble, images, imageLayout, breadcrumb } = Astro.props;
 ---
 
 <BaseLayout title={pageTitle} bodyBg="var(--gray-background)">
     <!-- Header -->
     <SiteHeader variant="back" backHref="/" />
+
+    <!-- Breadcrumb -->
+    {breadcrumb && (
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <ol class="breadcrumb-list">
+                {breadcrumb.map((item, index) => (
+                    <li class="breadcrumb-item">
+                        {item.href
+                            ? <a href={item.href} class="breadcrumb-link">{item.label}</a>
+                            : <span class="breadcrumb-current" aria-current="page">{item.label}</span>
+                        }
+                        {index < breadcrumb.length - 1 && (
+                            <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                        )}
+                    </li>
+                ))}
+            </ol>
+        </nav>
+    )}
 
     <!-- Main Content -->
     <main class="main-content">
@@ -60,7 +85,53 @@ const { pageTitle, subtitle, title, description, tags, period, tasks, members, t
     /* Main Content */
     .main-content {
         max-width: var(--max-width);
-        margin: 0 auto;
+        margin: 0px auto 0 auto;
+        border-left: 1px solid var(--gray-divider);
+        border-right: 1px solid var(--gray-divider);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        max-width: var(--max-width);
+        margin: 80px auto 20px auto;
+    }
+
+    .breadcrumb-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: var(--fs-body);
+        color: var(--gray-sub);
+    }
+
+    .breadcrumb-link {
+        color: var(--gray-sub);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .breadcrumb-link:hover {
+        color: var(--gray-main);
+        text-decoration: underline;
+    }
+
+    .breadcrumb-current {
+        color: var(--gray-main);
+    }
+
+    .breadcrumb-separator {
+        color: var(--gray-sub);
+        font-size: 1.1em;
     }
 
     /* Works List */
@@ -74,14 +145,29 @@ const { pageTitle, subtitle, title, description, tags, period, tasks, members, t
 
     /* Responsive */
     @media (max-width: 1440px) {
-        .main-content { padding-left: 100px; padding-right: 100px; }
+        .main-content {
+            padding: 100px 100px 0px 100px;
+        }
     }
 
     @media (max-width: 1024px) {
-        .main-content { padding-left: 60px; padding-right: 60px; }
+        .main-content { 
+            padding-left: 60px;
+            padding-right: 60px;
+            border-left: 1px solid var(--gray-divider);
+            border-right: 1px solid var(--gray-divider);
+        }
     }
 
     @media (max-width: 768px) {
-        .main-content { padding: 80px 24px 0; }
+        .breadcrumb {
+            margin: 80px 20px 20px 40px;
+        }
+
+        .main-content { 
+            padding: 0px;
+            margin: 0px 20px 0 20px;
+            
+        }
     }
 </style>
