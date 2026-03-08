@@ -48,8 +48,6 @@ const { title, backHref, breadcrumb } = Astro.props;
   .main-content {
     max-width: var(--max-width);
     margin: 0px auto 0px auto;
-    border-left: 1px solid var(--gray-divider);
-    border-right: 1px solid var(--gray-divider);
   }
 
   /* Breadcrumb */
@@ -119,14 +117,22 @@ const { title, backHref, breadcrumb } = Astro.props;
 <!-- slot内のクラスに適用するためglobalスコープで定義 -->
 <style is:global>
 
+  /* ContentHeader + 最初のContentSection をまとめるコンテナ */
+  .content-intro {
+    background: var(--gray-white);
+    border-left: 1px solid var(--gray-divider);
+    border-right: 1px solid var(--gray-divider);
+  }
+
   /* Content List - alkoo の works-list 相当のコンテナ */
   .sections-list{
     margin:40px 0px;
     background: var(--gray-white);
+    border-left: 1px solid var(--gray-divider);
+    border-right: 1px solid var(--gray-divider);
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding-bottom: 40px;
   }
 
   /* Content Section */
@@ -147,9 +153,17 @@ const { title, backHref, breadcrumb } = Astro.props;
     color: var(--gray-main);
   }
 
+  /* 関連リンク */
+  .related-links {
+    border-left: 1px solid var(--gray-divider);
+    border-right: 1px solid var(--gray-divider);
+  }
+
   /* Navigation Footer */
   .nav-footer {
     background: var(--gray-white);
+    border-left: 1px solid var(--gray-divider);
+    border-right: 1px solid var(--gray-divider);
     padding: 24px 70px;
     display: flex;
     justify-content: space-between;

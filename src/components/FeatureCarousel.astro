@@ -75,6 +75,7 @@ const captionsJson = JSON.stringify(images.map(img => img.caption ?? ''));
   .carousel {
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--gray-divider);
   }
 
   /* ホバー時のみ矢印を表示 */
@@ -166,8 +167,9 @@ const captionsJson = JSON.stringify(images.map(img => img.caption ?? ''));
     width: 40px;
     height: 40px;
     background: var(--gray-background);
+    border: none;
     border-left: 1px solid var(--gray-divider);
-    border-right: 1px solid var(--gray-divider);
+    /*border-right: 1px solid var(--gray-divider);*/
     display: flex;
     align-items: center;
     justify-content: center;

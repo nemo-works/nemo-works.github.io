@@ -1,4 +1,6 @@
 ---
+import MenuDialog from '../components/MenuDialog.astro';
+
 interface Props {
     title: string;
     bodyBg?: string;
@@ -21,6 +23,27 @@ const { title, bodyBg = 'var(--gray-white)' } = Astro.props;
 </head>
 <body style={`background: ${bodyBg};`}>
     <slot />
+    <MenuDialog
+      topLinks={[
+        { label: "TOP", href: "/" },
+      ]}
+      sections={[
+        {
+          title: "WORKS",
+          items: [
+            { label: "ALKOO", href: "/alkoo" },
+            { label: "駅からハイキング", href: "/ekihai" },
+            { label: "コバトンALKOOマイレージ", href: "/kobaton" },
+            { label: "ALKOO 法人サービス", href: "/alkoo_biz" },
+            { label: "dバリューパス", href: "/d-value-pass" },
+            { label: "社内デザインの底上げ", href: "#" },
+          ],
+        },
+      ]}
+      bottomLinks={[
+        { label: "PROFILE", href: "/#profile" },
+      ]}
+    />
 </body>
 </html>
 

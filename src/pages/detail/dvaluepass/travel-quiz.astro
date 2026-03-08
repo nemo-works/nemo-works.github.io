@@ -1,0 +1,129 @@
+---
+import DetailLayout from '../../../layouts/DetailLayout.astro';
+import ContentHeader from '../../../components/ContentHeader.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import ContentSection from '../../../components/ContentSection.astro';
+import FeatureCarousel from '../../../components/FeatureCarousel.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import YoutubeEmbed from '../../../components/YoutubeEmbed.astro';
+import NavFooter from '../../../components/NavFooter.astro';
+import { dValuePassWorks } from '../../../data/d_value_pass';
+
+const work = dValuePassWorks.find(w => w.id === 'travel-quiz')!;
+---
+
+<DetailLayout
+  title="旅するクイズ"
+  backHref="/d-value-pass"
+  breadcrumb={[
+    { label: "TOP", href: "/" },
+    { label: "dバリューパス", href: "/d-value-pass" },
+    { label: "旅するクイズ" },
+  ]}
+>
+
+  <div class="content-intro">
+    <ContentHeader
+      variant="detail"
+      title="新しい旅の目的地が見つかる日本を旅するクイズサービス"
+      description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
+      tags={work.tags}
+      period="2024年5月〜2024年8月"
+      tasks={["情報設計","レイアウト設計","デザイン作成","告知物作成"]}
+      members={["PM…1名","セールス…1名","エンジニア…2名", "デザイナー…1名"]}
+      thoughtBubble="リードデザイナーを担当しました"
+      images={[{ src: "/img/d-value-pass/travelquiz/kv.png", alt: "旅するクイズ" }]}
+      imageLayout="single"
+    />
+
+    <!-- 概要 -->
+    <ContentSection
+        title='サービス概要'
+        maintext='旅に関するクイズが毎日配信されるクイズサービス。'
+    />
+  </div>
+
+  <div class="sections-list">
+    <SectionHeader subtitle="サービスリリースまでの道のり" title="STORY" />
+    
+    <!-- 開発経緯 -->
+    <ContentSection
+        title='3~50代の女性に向けた新サービスを低コストでつくる。'
+        maintext='dバリューパス上での売り上げ獲得のため、新規サービス作成の打診を行ったところ、3~50歳代の女性向けに新しいサービスをしたいという話があり、社内で持っていた観光情報を元にしたクイズのWebサービスであれば低コストで作成ができることから企画がスタートしました。
+        '
+    />
+
+    <ContentSection
+        title='ターゲットユーザーの見ているものの理解。'
+        maintext='ターゲットユーザーの見ているものがどういうものかわかっていなかったため、まずは、ユーザー理解のため3~50歳代の女性、それぞれをターゲットにしているファッション雑誌やテレビ番組などを確認し、==大人の女性に一般的に向けられるグラフィックテイストを調査。==
+        同時にクイズ番組やクイズサービスのデザインも確認し、==クイズらしい見た目、ボタンの見せ方やグラフィックスタイルのリサーチを行いました。==
+        '
+    />
+  </div>
+
+   <div class="sections-list">
+    <SectionHeader subtitle="デザイン" title="DESIGN" />
+    
+    <!-- 開発経緯 -->
+    <ContentSection
+        title='コンセプトを策定し、サービスの軸を固める。'
+        maintext='5月から6月の着手開始当初、チーム内の雰囲気として、とにかくクイズを作るということしか決まっていなかったため、どのような機能がユーザーに必要か、なぜクイズを出すのか？どんなクイズが出ればいいのか？あるべきはずの考えが何も決まっていませんでした。
+        そこで==「クイズを通して日本を広く深く知ることで、次の旅の目的地が発見できるサービス」というコンセプトを策定==し、その考えを軸に必要な機能・要件、出題されるクイズを決定することにしました。
+        '
+    />
+
+    <ContentSection
+        title='「クイズを通して旅を見つける」、そんなロゴを目指して。'
+        maintext='サービスコンセプトをもとに、サービス名が「旅するクイズ」に決定。ロゴの作成を開始しました。
+        あまりにも性別に寄せすぎたロゴにしてしまうと、出題されるクイズと、ビジュアルイメージの乖離が激しくなると考え、性別のらしさはあまり加えず、==クイズ+旅をメイン軸にした方向性で検討を加速。==
+        「Q」+「車窓」で旅情をメインモチーフにしたロゴと、「Q」+「富士山」で和モダンな大人っぽい雰囲気のロゴ、「Q」+「虫眼鏡」で「旅のモチーフ」を学ぶ、新しい知識発見に対する好奇心を軸にしたロゴの3案を提案し、「Q」+「虫眼鏡」の案が採用されました。
+        '
+    />
+    <FeatureCarousel images={[
+        { src: "/img/d-value-pass/travelquiz/img_travelquiz_cap001.jpg", alt: "旅するクイズ | ロゴ", caption: "「Q」と「虫眼鏡」のカタチをかけ、クイズを通して新しい旅の発見を表現したロゴ。" }
+    ]}
+    />
+    <ContentSection
+        title='ビジネス戦略を汲み取った画面構成'
+        maintext='dバリューパスのどのサービスにも同様の施策が施されているのですが「旅するクイズ」では、==1日1問クイズに回答でdポイントが当たる==という機能があり、ビジネス戦略として==最も優先すべきはこの機能へのアクセシビリティの高さ==でした。
+        そこで、本サービスのメイン機能をトップ画面に表示される「今日のクイズ」にし、Webサービスであることも加味し1ページの中にさまざまなクイズへのアクセス経路を作るというページ構成でUI構築を検討しました。
+        '
+    />
+    <ContentSection
+        title='それでも、また遊びたくなるサービスを目指して。'
+        maintext='自社のビジネス的な課題解決だけを目指すと、ユーザーの記憶に残らないサービスになってしまうことを危惧し、自分からは==ランダムに楽しめる「サクッとクイズ」と「カテゴリ/エリア別クイズ」の機能追加を提案==しました。
+        その価値を開発時は受け入れてもらえませんでしたが、==松竹梅で要件を分割し、最低限のコストで叶えられる機能としてリリースが決定。==
+        「学び」と「エンタメ」感が両立したスタイリングを目指し、学習感を強く感じるノートのような罫線、エンタメ感を彷彿するカラフルなUIで、2024年8月に無事にリリースいたしました。
+        '
+    />
+    <FeatureCarousel images={[
+        { src: "/img/d-value-pass/travelquiz/img_travelquiz_cap002.webp", alt: "旅するクイズ | サービスUI", caption: "最低要件・低コストで進めた案件ながら、コンテンツを再利用した独自のサービスが完成。" }
+    ]}
+    />
+  </div>
+
+  <!-- 反響 -->
+  <div class="sections-list">
+    <SectionHeader subtitle="反響" title="OUTCOME"/>
+
+    <ContentSection
+      title='安定したユーザー数の獲得。想定以上の好発進でユーザーに浸透。'
+      maintext='クイズに答えるだけのポイ活というシンプルなフローが受けたのか、==リリース開始後、数日でナビタイムサービスの3分の1程度のDAUが獲得==でき、想定以上の好発進スタートとなりました。
+      '
+    />
+
+    <ContentSection
+      title='ターゲットユーザーにちゃんと届く。'
+      maintext='当時のdバリューパスのユーザー層は、男性が多く、ナビタイムから出していたサービスの多くは男性ユーザーがメインユーザー層でしたが、このサービスに関しては==6割が女性のユーザー==となっていて、自分が想定していた以上にうまくターゲットユーザーに届けることができたことが純粋に嬉しかったです。'
+    />
+  </div>
+
+  <!-- 関連リンク -->
+  <RelatedLinks links={[
+    { href: "https://corporate.navitime.co.jp/topics/pr/202408/06_5774.html", label: "ナビタイムジャパン | 『旅するクイズ forスゴ得』をドコモ「スゴ得コンテンツ」にて提供開始" },
+  ]} />
+
+  <!-- Navigation Footer -->
+  <NavFooter works={dValuePassWorks} currentId="travel-quiz" />
+
+</DetailLayout>

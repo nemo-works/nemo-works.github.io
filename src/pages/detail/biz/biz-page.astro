@@ -22,24 +22,26 @@ const work = alkooBizWorks.find(w => w.id === 'biz-page')!;
   ]}
 >
 
-  <ContentHeader
-    variant="detail"
-    title="売上の大黒柱である法人商材紹介サイトの製作。\nデザイン作成から運用まで担当。伝えきれていなかった商材、過去の実績をまとめて見える化。"
-    description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
-    tags={work.tags}
-    period="2022年12月〜2023年2月"
-    tasks={["情報設計","レイアウト設計","デザイン作成","コンテンツ更新"]}
-    members={["PM…1名","セールス…2名","エンジニア…2名", "デザイナー…1名"]}
-    thoughtBubble="リードデザイナーを担当しました"
-    images={[{ src: "/img/biz-pages/img_contents_alkoobiz_pages.png", alt: "法人商材サイト" }]}
-    imageLayout="single"
-  />
+  <div class="content-intro">
+    <ContentHeader
+      variant="detail"
+      title="売上の大黒柱である法人商材紹介サイトの製作。\nデザイン作成から運用まで担当。伝えきれていなかった商材、過去の実績をまとめて見える化。"
+      description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
+      tags={work.tags}
+      period="2022年12月〜2023年2月"
+      tasks={["情報設計","レイアウト設計","デザイン作成","コンテンツ更新"]}
+      members={["PM…1名","セールス…2名","エンジニア…2名", "デザイナー…1名"]}
+      thoughtBubble="リードデザイナーを担当しました"
+      images={[{ src: "/img/biz-pages/img_contents_alkoobiz_pages.png", alt: "法人商材サイト" }]}
+      imageLayout="single"
+    />
 
-  <!-- 概要 -->
-   <ContentSection
+    <!-- 概要 -->
+    <ContentSection
         title='ページ概要'
         maintext='「ALKOO」を使った法人イベントや各種商材紹介を一覧化し、営業引き合いにつなげるためのページ。「ALKOO」公式アプリで知名度を上げていき、具体的な商材やできることが気になった担当者との接点となるよう設計。'
     />
+  </div>
 
   <div class="sections-list">
     <SectionHeader subtitle="ページ公開までの道のり" title="STORY" />
@@ -92,6 +94,6 @@ const work = alkooBizWorks.find(w => w.id === 'biz-page')!;
   ]} />
 
   <!-- Navigation Footer -->
-  <NavFooter works={alkooBizWorks} currentId="kobaton" />
+  <NavFooter works={alkooBizWorks} currentId="biz-page" />
 
 </DetailLayout>

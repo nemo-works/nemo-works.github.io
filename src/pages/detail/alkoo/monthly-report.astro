@@ -21,23 +21,25 @@ const work = alkooWorks.find(w => w.id === 'mothly-report')!;
   ]}
 >
 
-  <ContentHeader
-    variant="detail"
-    title="ユーザーのお出かけをキャラクターと一緒にふりかえり。\n1ヶ月の移動を「思い出」に感じられるあたたかなサービスイメージをコンテンツで表現。"
-    description="現在地から目的地まで日陰を優先した徒歩ルートを表示する機能です。\n任意の場所まで最大5種類のルートを引くことができ、それぞれのルートを占める日陰率の割合を確認することができ、日中に歩くユーザーにとって最適かつ涼しく歩けるルートの検討に役立たせることができる機能になっています。"
-    tags={work.tags}
-    period="2020年7月〜2020年8月"
-    tasks={["機能検討", "UIUX", "イラスト","グロース施策"]}
-    members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
-    images={[{ src: "/img/shade-route/kv.png", alt: "日陰ルート機能紹介" }]}
-    imageLayout="single"
-  />
+  <div class="content-intro">
+    <ContentHeader
+      variant="detail"
+      title="ユーザーのお出かけをキャラクターと一緒にふりかえり。\n1ヶ月の移動を「思い出」に感じられるあたたかなサービスイメージをコンテンツで表現。"
+      description="現在地から目的地まで日陰を優先した徒歩ルートを表示する機能です。\n任意の場所まで最大5種類のルートを引くことができ、それぞれのルートを占める日陰率の割合を確認することができ、日中に歩くユーザーにとって最適かつ涼しく歩けるルートの検討に役立たせることができる機能になっています。"
+      tags={work.tags}
+      period="2020年7月〜2020年8月"
+      tasks={["機能検討", "UIUX", "イラスト","グロース施策"]}
+      members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
+      images={[{ src: "/img/shade-route/kv.png", alt: "日陰ルート機能紹介" }]}
+      imageLayout="single"
+    />
 
-  <!-- 概要 -->
-   <ContentSection
+    <!-- 概要 -->
+    <ContentSection
         title='機能概要'
         maintext='ここ数年、毎年都心では猛暑による熱中症被害が相次いでいます。日々習慣としてウォーキングを楽しむ人にとって、運動をしないという選択肢は非現実的です。ユーザーが夏の猛暑下でもウォーキングを楽しめるようにALKOOでは時間ごとの日陰データを算出し、涼しく歩ける「日陰ルート」を検索できる機能を提供開始しました。'
     />
+  </div>
 
   <div class="sections-list">
     <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />

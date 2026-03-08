@@ -6,8 +6,8 @@
 
 ## ファイル一覧
 
-| ファイル | 対応ページ |
-|---|---|
+| ファイル   | 対応ページ                                         |
+| ---------- | -------------------------------------------------- |
 | `alkoo.ts` | `pages/alkoo.astro` / `pages/detail/alkoo-*.astro` |
 
 ---
@@ -85,14 +85,14 @@ href: '/detail/alkoo/walk-route',
 
 ```ts
 interface AlkooWorkItem {
-  id: string;           // 一意なID。詳細ページで find() のキーになる
-  listTitle: string;    // 制作物リストのタイトル
+  id: string; // 一意なID。詳細ページで find() のキーになる
+  listTitle: string; // 制作物リストのタイトル
   listDescription: string; // 制作物リストの説明文（\n で改行）
   thumbnail: {
-    src: string;        // サムネイル画像パス（public/ 相対）
+    src: string; // サムネイル画像パス（public/ 相対）
     alt: string;
   };
-  href: string | null;  // 詳細ページのパス。null の場合はリンクなし
-  tags: string[];       // タグ（リスト・詳細ページ共通）
+  href: string | null; // 詳細ページのパス。null の場合はリンクなし
+  tags: string[]; // タグ（リスト・詳細ページ共通）
 }
 ```

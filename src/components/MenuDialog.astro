@@ -1,0 +1,280 @@
+---
+interface MenuItem {
+  label: string;
+  href: string;
+}
+
+interface MenuSection {
+  title: string;
+  items: MenuItem[];
+}
+
+interface Props {
+  sections: MenuSection[];
+  topLinks?: MenuItem[];
+  bottomLinks?: MenuItem[];
+}
+
+const { sections, topLinks = [], bottomLinks = [] } = Astro.props;
+---
+
+<div class="menu-overlay" id="menu-overlay">
+  <div class="menu-dialog">
+    <div class="menu-header">
+      <p class="menu-subtitle">メニュー</p>
+      <div class="menu-title-row">
+        <h2 class="menu-title">MENU</h2>
+        <button class="menu-close" type="button" aria-label="メニューを閉じる">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+    </div>
+
+    {topLinks.map((link) => (
+      <a href={link.href} class="menu-footer-link">
+        <span class="menu-footer-label">{link.label}</span>
+        <span class="material-icons menu-item-arrow">arrow_forward</span>
+      </a>
+    ))}
+
+    {sections.map((section) => (
+      <div class="menu-section">
+        <div class="menu-section-header">
+          <p class="menu-section-title">{section.title}</p>
+        </div>
+        <ul class="menu-list">
+          {section.items.map((item) => (
+            <li>
+              <a href={item.href} class="menu-item">
+                <span class="menu-item-label">{item.label}</span>
+                <span class="material-icons menu-item-arrow">arrow_forward</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+    {bottomLinks.map((link) => (
+      <a href={link.href} class="menu-footer-link">
+        <span class="menu-footer-label">{link.label}</span>
+        <span class="material-icons menu-item-arrow">arrow_forward</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .menu-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu-dialog {
+    background: var(--gray-white);
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-overlay.is-open .menu-dialog {
+    transform: translateY(0);
+  }
+
+  .menu-header {
+    padding: 40px 40px 32px;
+  }
+
+  .menu-subtitle {
+    font-size: var(--fs-tag);
+    color: var(--gray-sub);
+    margin-bottom: 8px;
+  }
+
+  .menu-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-title {
+    font-family: var(--font-en);
+    font-size: var(--fs-heading-lg);
+    font-weight: 700;
+    color: var(--gray-main);
+  }
+
+  .menu-close {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--gray-main);
+    padding: 0;
+  }
+
+  .menu-close .material-icons {
+    font-size: 28px;
+    color: var(--gray-sub);
+  }
+
+  .menu-section {
+    /* padding-top: 8px; */
+  }
+
+  .menu-section-header {
+    padding: 16px 40px;
+    border-top: 1px solid var(--gray-divider);
+  }
+
+  .menu-section-title {
+    font-family: var(--font-en);
+    font-size: var(--fs-sub);
+    font-weight: 600;
+    color: var(--gray-main);
+  }
+
+  .menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px 20px 56px;
+    border-top: 1px solid var(--gray-divider);
+    text-decoration: none;
+    color: var(--gray-main);
+    font-size: var(--fs-sub);
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .menu-item:hover {
+    background: var(--gray-background);
+  }
+
+  .menu-item-arrow {
+    font-size: 20px;
+    color: var(--gray-sub);
+  }
+
+  .menu-footer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-top: 1px solid var(--gray-divider);
+    text-decoration: none;
+    color: var(--gray-main);
+    font-family: var(--font-en);
+    font-size: var(--fs-sub);
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .menu-footer-link:hover {
+    background: var(--gray-background);
+  }
+
+  @media (max-width: 768px) {
+    .menu-dialog {
+      width: 100%;
+      max-width: none;
+      max-height: 100vh;
+      height: 100%;
+    }
+
+    .menu-header {
+      padding: 32px 16px 16px 24px;
+    }
+
+    .menu-close {
+      display: flex;
+    }
+
+    .menu-section-header {
+      padding: 16px 24px;
+    }
+
+    .menu-item {
+      padding: 16px 24px 16px 40px;
+    }
+
+    .menu-footer-link {
+      padding: 16px 24px;
+    }
+  }
+</style>
+
+<script>
+  function initMenu() {
+    const overlay = document.getElementById('menu-overlay');
+    const menuButtons = document.querySelectorAll('.menu-button');
+
+    if (!overlay) return;
+
+    function openMenu() {
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    menuButtons.forEach((btn) => {
+      btn.addEventListener('click', openMenu);
+    });
+
+    const closeButton = overlay.querySelector('.menu-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+
+    overlay.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  initMenu();
+  document.addEventListener('astro:page-load', initMenu);
+</script>

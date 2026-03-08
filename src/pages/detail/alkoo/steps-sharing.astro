@@ -20,28 +20,30 @@ const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
     { label: "歩数共有機能" },
   ]}
 >
-  <ContentHeader
-    variant="detail"
-    title="歩数を画像・イラストに載せて友人や家族に共有。
-    周囲の人に今日の思い出と歩数を共有して日々のモチベーションを維持。"
-    description="毎日の歩数を写真やイラストを添えてSNS共有。今日と今日の歩みを分かち合い、ユーザー像の理解がより確実なものに。"
-    tags={work.tags}
-    period="2025年4月〜2025年6月"
-    tasks={["仕様検討", "UI検討","機能提案"]}
-    members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
-    thoughtBubble='メインデザイナーを担当しました'
-    images={[{ src: "/img/steps-sharing/kv.jpg", alt: "歩数共有機能" }]}
-    imageLayout="single"
-  />
+  <div class="content-intro">
+    <ContentHeader
+      variant="detail"
+      title="歩数を画像・イラストに載せて友人や家族に共有。
+      周囲の人に今日の思い出と歩数を共有して日々のモチベーションを維持。"
+      description="毎日の歩数を写真やイラストを添えてSNS共有。今日と今日の歩みを分かち合い、ユーザー像の理解がより確実なものに。"
+      tags={work.tags}
+      period="2025年4月〜2025年6月"
+      tasks={["仕様検討", "UI検討","機能提案"]}
+      members={["PM…1名", "エンジニア…2名", "デザイナー…1名"]}
+      thoughtBubble='メインデザイナーを担当しました'
+      images={[{ src: "/img/steps-sharing/kv.jpg", alt: "歩数共有機能" }]}
+      imageLayout="single"
+    />
 
-<!-- 概要 -->
-   <ContentSection
+    <!-- 概要 -->
+    <ContentSection
         title='機能概要'
         maintext=
         '歩数を自分が撮影した画像やイラストに載せてSNSに共有ができるシンプルな機能です。
         ですが、この機能によってALKOOに求められている機能の需要、ユーザー像が今まで以上に明確になりました。
         '
     />
+  </div>
 
   <div class="sections-list">
     <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />

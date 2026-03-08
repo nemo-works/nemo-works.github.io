@@ -20,28 +20,30 @@ const work = alkooWorks.find(w => w.id === 'steps-sharing')!;
     { label: "散歩ルート機能" },
   ]}
 >
-  <ContentHeader
-    variant="detail"
-    title=
-        "運動習慣を飽きずに続けるために。
-        時間や距離、目標の歩数でライフスタイルに合わせたランダムなルートをサクッと提案。"
-    description="時間や距離、目標の歩数に合わせて、現在地から周辺を回って元の場所に戻ってくることができる「ちょうどいい」を追求したルート検索機能の製作。"
-    tags={work.tags}
-    period="2021年12月〜2022年4月"
-    tasks={["仕様検討", "UI検討","機能提案"]}
-    members={["PM…1名", "エンジニア…5名", "デザイナー…1名"]}
-    thoughtBubble='メインデザイナーを担当しました'
-    images={[{ src: "/img/walk-route/kv.png", alt: "歩数共有機能" }]}
-    imageLayout="single"
-  />
+  <div class="content-intro">
+    <ContentHeader
+      variant="detail"
+      title=
+          "運動習慣を飽きずに続けるために。
+          時間や距離、目標の歩数でライフスタイルに合わせたランダムなルートをサクッと提案。"
+      description="時間や距離、目標の歩数に合わせて、現在地から周辺を回って元の場所に戻ってくることができる「ちょうどいい」を追求したルート検索機能の製作。"
+      tags={work.tags}
+      period="2021年12月〜2022年4月"
+      tasks={["仕様検討", "UI検討","機能提案"]}
+      members={["PM…1名", "エンジニア…5名", "デザイナー…1名"]}
+      thoughtBubble='メインデザイナーを担当しました'
+      images={[{ src: "/img/walk-route/kv.png", alt: "歩数共有機能" }]}
+      imageLayout="single"
+    />
 
-<!-- 概要 -->
-   <ContentSection
+    <!-- 概要 -->
+    <ContentSection
         title='機能概要'
         maintext=
         'この機能は入力された歩数もしくは時間に合わせて周辺をいい感じにぐるっと回って戻って来れるルート検索機能です。\n周辺に大きな公園やウォーキングコースがない環境や、夕飯の前にちょっと歩きたい時など生活のちょっとしたタイミングで使えるルートがどこでも検索でき、運動の習慣を続けられるような機能を目指しました。
         '
     />
+  </div>
 
   <div class="sections-list">
     <SectionHeader subtitle="開発経緯とUIUX検討" title="STORY" />
