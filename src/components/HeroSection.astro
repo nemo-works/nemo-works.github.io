@@ -136,7 +136,7 @@ titleLines.forEach((line, lineIdx) => {
     @media (max-width: 768px) {
         .hero {
             padding: 100px 24px 40px;
-            height: 100svh;
+            height: 100svh; /* JSで上書きされる */
             align-items: stretch;
         }
         .hero-content {
@@ -164,6 +164,16 @@ titleLines.forEach((line, lineIdx) => {
 </style>
 
 <script>
+    // SPでheroの高さをロード時に固定（アドレスバーの出し隠しによる変動を防ぐ）
+    const fixHeroHeight = () => {
+        const hero = document.querySelector<HTMLElement>('.hero');
+        if (hero && window.innerWidth <= 768) {
+            hero.style.height = `${window.innerHeight}px`;
+        }
+    };
+    fixHeroHeight();
+    document.addEventListener('astro:page-load', fixHeroHeight);
+
     const observe = () => {
         const title = document.querySelector('.hero-title');
         if (!title) return;
