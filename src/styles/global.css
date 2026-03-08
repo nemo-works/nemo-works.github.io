@@ -35,6 +35,7 @@
   --fs-tag: 0.875rem; /* 14px */
   --fs-sub: 1.25rem; /* 20px */
   --fs-heading-sm: 1.75rem; /* 28px */
+  --fs-heading-smd: 2rem; /* 32px */
   --fs-heading-md: 2.5rem; /*  */
   --fs-heading-lg: 3.5rem; /* 56px */
 }
@@ -46,6 +47,7 @@
     --fs-tag: 0.75rem; /* 12px */
     --fs-sub: 1rem; /* 16px */
     --fs-heading-sm: 1.25rem; /* 20px */
+    --fs-heading-smd: 1.5rem; /* px */
     --fs-heading-md: 1.75rem; /* 28px */
     --fs-heading-lg: 2.25rem; /* 36px */
   }

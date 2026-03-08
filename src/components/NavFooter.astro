@@ -1,4 +1,9 @@
 ---
+interface NavLink {
+  label: string;
+  href: string;
+}
+
 interface WorkNavItem {
   id: string;
   listTitle: string;
@@ -6,27 +11,36 @@ interface WorkNavItem {
 }
 
 interface Props {
-  works: WorkNavItem[];
-  currentId: string;
+  works?: WorkNavItem[];
+  currentId?: string;
+  prev?: NavLink;
+  next?: NavLink;
 }
 
-const { works, currentId } = Astro.props;
+const { works, currentId, prev: explicitPrev, next: explicitNext } = Astro.props;
 
-const currentIndex = works.findIndex(w => w.id === currentId);
-const prev = currentIndex > 0 ? works[currentIndex - 1] : null;
-const next = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+let prev: NavLink | null = explicitPrev ?? null;
+let next: NavLink | null = explicitNext ?? null;
+
+if (works && currentId) {
+  const currentIndex = works.findIndex(w => w.id === currentId);
+  const prevWork = currentIndex > 0 ? works[currentIndex - 1] : null;
+  const nextWork = currentIndex < works.length - 1 ? works[currentIndex + 1] : null;
+  prev = prevWork ? { label: prevWork.listTitle, href: prevWork.href ?? '#' } : null;
+  next = nextWork ? { label: nextWork.listTitle, href: nextWork.href ?? '#' } : null;
+}
 ---
 
 <nav class="nav-footer">
   {prev ? (
-    <a href={prev.href ?? '#'} class="nav-button">
+    <a href={prev.href} class="nav-button">
       <span class="material-icons">arrow_back</span>
-      <span>{prev.listTitle}</span>
+      <span>{prev.label}</span>
     </a>
   ) : <div />}
   {next ? (
-    <a href={next.href ?? '#'} class="nav-button">
-      <span>{next.listTitle}</span>
+    <a href={next.href} class="nav-button">
+      <span>{next.label}</span>
       <span class="material-icons">arrow_forward</span>
     </a>
   ) : <div />}

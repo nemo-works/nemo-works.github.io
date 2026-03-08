@@ -6,6 +6,7 @@ import ContentSection from '../components/ContentSection.astro';
 import FeatureCarousel from '../components/FeatureCarousel.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import YoutubeEmbed from '../components/YoutubeEmbed.astro';
+import NavFooter from '../components/NavFooter.astro';
 
 const work = {
   tags: ["UIUX", "グラフィックデザイン", "顧客折衝", "新規サービス立ち上げ"],
@@ -24,6 +25,7 @@ const work = {
   <div class="content-intro">
     <ContentHeader
       variant="detail"
+      client="埼玉県様"
       title="サービス初となる自治体公式サービス。\nALKOOのアップデートでサービスもアップデートされるWin-Winな開発・運用で市民の健康増進活動をサポート。"
       description="埼玉県が誇る名物キャラクター「コバトン」を看板に据えた、埼玉県民の健康増進サービスの立ち上げからデザイン作成を担当。\nサービスの設計から、ユーザー情報確認ツールの設計など、初となる自治体サービスの立ち上げを行いました。"
       tags={work.tags}
@@ -160,12 +162,6 @@ const work = {
   ]} />
 
   <!-- Navigation Footer -->
-  <nav class="nav-footer">
-    <a href="/" class="nav-button">
-      <span class="material-icons">arrow_back</span>
-      <span>TOP</span>
-    </a>
-    <div />
-  </nav>
+  <NavFooter prev={{ label: "TOP", href: "/" }} />
 
 </DetailLayout>

@@ -9,6 +9,7 @@ interface ImageItem {
 
 interface Props {
   subtitle?: string;
+  client?: string;
   title: string;
   description: string;
   tags?: string[];
@@ -23,6 +24,7 @@ interface Props {
 
 const {
   subtitle,
+  client,
   title,
   description,
   tags,
@@ -46,6 +48,7 @@ const titleLines = title.split('\n');
         <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
       ))}
     </h1>
+    {client && <p class="client">{client}</p>}
     <p class="description">
       {description.split('\n').map((line, i, arr) => (
         <Fragment>{line}{i < arr.length - 1 && <br />}</Fragment>
@@ -121,6 +124,13 @@ const titleLines = title.split('\n');
   }
 
   .subtitle {
+    font-size: var(--fs-sub);
+    font-weight: 500;
+    color: var(--gray-sub);
+    line-height: 1;
+  }
+
+  .client {
     font-size: var(--fs-sub);
     font-weight: 500;
     color: var(--gray-sub);

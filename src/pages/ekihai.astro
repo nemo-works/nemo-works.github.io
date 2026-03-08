@@ -5,6 +5,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import ContentSection from '../components/ContentSection.astro';
 import FeatureCarousel from '../components/FeatureCarousel.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
+import NavFooter from '../components/NavFooter.astro';
 
 const work = {
   tags: ["UIUX", "機能検討", "顧客折衝", "告知物デザイン作成"],
@@ -23,8 +24,9 @@ const work = {
   <div class="content-intro">
     <ContentHeader
       variant="detail"
-      title="鉄道会社提供のハイキングサービス最大手「駅からハイキング」リニューアル版アプリの製作を受託。\nユーザーとコースをつなぐ、楽しいハイキングの接点を目指して。"
-      description="サービス開始から25周年を誇るハイキングサービス「駅からハイキング」のリニューアル版アプリを作成。\nウォーキング分野で最大手を担っていた中枢のサービス。"
+      client="東日本旅客鉄道株式会社様"
+      title="鉄道会社提供のハイキングサービス最大手「駅からハイキング」\nリニューアル版アプリの製作を受託。ユーザーとコースをつなぐ、楽しいハイキングの接点を目指して。"
+      description="サービス開始から25周年を誇るハイキングサービス「駅からハイキング」のリニューアル版アプリを作成。\nウォーキング分野で最大手を担っていた中枢サービスのアプリリニューアルをウォーキングアプリの運用実績から採用。"
       tags={work.tags}
       period="2023年7月〜2024年4月"
       tasks={["顧客折衝","UI/UX設計","告知物デザイン作成"]}
@@ -49,21 +51,64 @@ const work = {
     <ContentSection
         title='リニューアルに至った経緯'
         maintext='ご依頼をいただいた当初、すでにアプリの提供はされていましたが、WebViewが主コンテンツとなっており、コースの実利用数の計測や実際に歩いたかを判定することが難しい状況でした。
-        その上、コースを実施するにあたって、コースを地図上に書いたチラシを協力会社に依頼して印刷してもらう必要があり、==コスト面での課題からコース開催ができない事例もあり、アプリ配信で解決したいということが開発依頼の発端でした。==
+        その上、コースを実施するにあたって、コースを地図上に書いたチラシを協力会社に依頼して印刷してもらう必要があり、==コスト面での課題からコース開催ができない事例もあり、アプリ配信で解決したいということがご依頼の発端でした。==
         '
     />
 
     <ContentSection
-        title='アプリのUIとコースデータベースを並行し、要件を洗い出していく。'
-        maintext='既存のデータベースはありましたが、コース形状の配信やスポットごとにクーポン情報を追加するためデータベースを一新。
-        アプリのUIUX検討と並行することで必要な要素を洗い出しを行っていきました。
+        title='現地視察を通して必要な情報と運用実態を調査'
+        maintext='「駅ハイ」というイベントはすでに知っていましたが、==どのように運用しているかを理解するため、現地視察を実施しました。==
+        「駅からハイキング」は基本的に駅起点となるため、駅員さんがイベント開始時に==駅で受付を行い地図を手渡しし、ユーザーが歩き出すという流れになっています。==
         '
     />
     
     <!-- Feature Image -->
     <FeatureCarousel images={[
-      { src: "/img/shade-route/img_shade_route_cap001@2x.png", alt: "UI・仕様上の工夫" },
+      { src: "/img/ekihai/img_ekihai_cap001.jpg", alt: "池袋駅構内で実施していた案内", caption: "池袋駅構内で実施していた案内。Webサイトやアプリでの周知に加えて駅内での案内も豊富。"},
+      { src: "/img/ekihai/img_ekihai_cap002.jpg", alt: "看板を持った駅員さんがイベントの開始場所までの案内を実施している。", caption: "看板を持った駅員さんがイベントの開始場所までの案内を実施している。"},
     ]} />
+  </div>
+
+  <div class="sections-list">
+    <SectionHeader subtitle="UI・コース入稿ツールの設計" title="DESIGN" />
+    <ContentSection
+        title='理解した駅ハイの魅力'
+        maintext='駅ハイに参加することで、ファンが多くいる理由が理解できました。その土地を知り尽くした駅員さんたちが作り上げるコースは普段なら見つけることもできないような魅力に溢れていて、街の新しい魅力に気づくことを実感しました。
+        紙地図は非常に詳細にできていて目印となる建物の記載があったり、道の注意点を教えてくれるため非常にわかりやすかったです。一方で、==紙地図はサイズが大きく、しまったり出したりが大変で手元が少し慌ただしくなる==問題も理解しました。
+        '
+    />
+
+    <ContentSection
+        title='行ったからこそわかる出したい情報の整理'
+        maintext='10月ごろの現地参加のタイミングですでにワイヤーフレームの着手はしていましたが、現地参加を通して==「駅と別の受付場所(スタート場所)の記載の必要性」や「コースの注意事項を充実の必要性」など新しい発見==が多数ありました。
+        実際に行って気付いた情報をもとにワイヤーフレームのアップデートを行い、==2週に1回程度、アプリUIについても直接担当者様と話し合い改善==それ以外にもSlack上でUIの相談をしながらアプリのデザインを進めていきました。
+        '
+    />
+
+    <ContentSection
+        title='アプリデザインと並行しコース入稿ツール作成。UIデザイナーとしての真髄を自覚。'
+        maintext='アプリデザインのワイヤーフレーム作成と並行して、コース入稿ツールについても制作を進めていました。
+        地図上の経路入力から、立ち寄りスポットの入力など、ユーザーが目にする情報の全てが入力できるツールになっていたため、そのデータの構造や各項目のデータタイプや入力規制などを把握する必要がありました。
+        同時にアプリのデザインも作成していたため、アプリ上に出したい情報と入稿ツールの情報の統一を図れるのは自分だけだと、UIデザイナーとしての真の立ち位置を改めて自覚し、DB設計のMTGから同席。
+        ==ユーザーのアプリの見え方から、担当者が入力する情報まで。プロダクトの全ての情報を一貫して繋げていくため、データとサービスのハブになるように意識して行動をしていました。==
+        '
+    />
+
+    <FeatureCarousel images={[
+      { src: "/img/ekihai/img_ekihai_cap003.jpg", alt: "アプリUI（左：ホーム画面 | 中央：記録タブ | 右：コース地図）", caption: "アプリUI（左：ホーム画面 | 中央：記録タブ | 右：コース地図）"},
+      { src: "/img/ekihai/img_ekihai_cap004.jpg", alt: "特にこだわって追加した仕様", caption: "ホーム画面・コース詳細画面で特にこだわって追加した仕様"},
+    ]} />
+
+    <ContentSection
+        title='1月下旬。社内でのアプリリリース。FTの実施。'
+        maintext='
+        '
+    />
+    
+    <FeatureCarousel images={[
+      { src: "/img/ekihai/img_ekihai_cap005.jpg", alt: "多様な参加者を表現できるよう、歩く人はコンポーネントの組み合わせで10パターン以上作成ができる。", caption: "多様な参加者を表現できるよう、歩く人はコンポーネントの組み合わせで10パターン以上作成ができる。"},
+    ]} />
+
   </div>
 
   <!-- 反響 -->
@@ -85,15 +130,9 @@ const work = {
   ]} />
 
   <!-- Navigation Footer -->
-  <nav class="nav-footer">
-    <a href="/alkoo" class="nav-button">
-      <span class="material-icons">arrow_back</span>
-      <span>日陰ルート機能</span>
-    </a>
-    <a href="#" class="nav-button">
-      <span>散歩ルート機能</span>
-      <span class="material-icons">arrow_forward</span>
-    </a>
-  </nav>
+  <NavFooter
+    prev={{ label: "日陰ルート機能", href: "/alkoo" }}
+    next={{ label: "散歩ルート機能", href: "#" }}
+  />
 
 </DetailLayout>
