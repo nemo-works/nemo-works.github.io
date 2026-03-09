@@ -20,7 +20,8 @@ titleLines.forEach((line, lineIdx) => {
                 )}
             </h1>
             <p class="hero-name">SOMA NEMOTO</p>
-            <p class="hero-description">シンプルで、明快な、デザインで<br>日々に少しの喜びを与えられるサービスを届けられる<br>デザイナーを志しています。</p>
+            <p class="hero-name-sm">根本 壮馬</p>
+            <p class="hero-description">シンプルで、明快な、デザインで<br>日々に少しの喜びを与えられるサービスを届ける<br>デザイナーを志しています。</p>
         </div>
         <div class="hero-image">
             <img src="/img/index/top-icon.png" alt="Soma Nemoto">
@@ -54,7 +55,6 @@ titleLines.forEach((line, lineIdx) => {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        gap: 24px;
         color: var(--gray-main);
     }
 
@@ -63,6 +63,7 @@ titleLines.forEach((line, lineIdx) => {
         font-weight: 700;
         line-height: 160%;
         letter-spacing: 8%;
+        padding-bottom: 70px;
     }
 
     .char {
@@ -79,14 +80,23 @@ titleLines.forEach((line, lineIdx) => {
 
     .hero-name {
         font-family: var(--font-en);
-        font-size: 2.75vw;
+        font-size: 3vw;
         font-weight: 700;
         line-height: 48px;
+        padding-bottom: 5px;
+    }
+
+    .hero-name-sm {
+        font-family: var(--font-jp);
+        font-size: 1.75vw;
+        color: var(--gray-main);
+        font-weight: 500;
+        padding-bottom: 30px;
     }
 
     .hero-description {
         font-size: var(--fs-sub);
-        line-height: 210%;
+        line-height: 180%;
     }
 
     .hero-image {
@@ -122,15 +132,29 @@ titleLines.forEach((line, lineIdx) => {
     }
 
     @media (max-width: 1024px) {
+        .hero {
+            padding: 100px 80px 40px;
+            align-items: stretch;
+        }
         .hero-content {
             flex-direction: column;
-            align-items: center;
+            align-items: start;
         }
         .hero-text {
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
         }
-        .hero-image { justify-content: center; }
+        .hero-image {
+            width: 100%;
+            justify-content: right;
+            align-items: end;
+            flex-direction: row-reverse;
+        }
+        .hero-image img {
+            width: 220px;
+            height: 220px;
+        }
     }
 
     @media (max-width: 768px) {
@@ -144,12 +168,14 @@ titleLines.forEach((line, lineIdx) => {
             flex-direction: column;
             align-items: start;
         }
+
         .hero-text {
             padding-left: 4vw;
             align-items: flex-start;
             justify-content: center;
             text-align: left;
         }
+
         .hero-image {
             padding-right: 2vw;
             width: 100%;
@@ -157,10 +183,29 @@ titleLines.forEach((line, lineIdx) => {
             align-items: end;
             flex-direction: row-reverse;
         }
-        .hero-title { font-size: 36px; }
-        .hero-name { font-size: 32px; }
-        .hero-description { font-size: 16px; }
-        .hero-image img { width: 40svw; height: auto; }
+
+        .hero-title {
+            font-size: 5.25vw;
+        }
+
+        .hero-name {
+            font-size: 4.5vw;
+            padding-bottom: 0px;
+        }
+
+        .hero-name-sm{
+            font-size: 3vw;
+        }
+
+        .hero-description {
+            font-size: var(--fs-body);
+            line-height: 190%;
+        }
+
+        .hero-image img {
+            width: 30svw; 
+            height: auto;
+        }
     }
 </style>
 

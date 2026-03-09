@@ -26,7 +26,6 @@ const { href, image, imageAlt, category, title } = Astro.props;
 <style>
     .work-card {
         background: var(--gray-white);
-        border: 1px solid var(--gray-divider);
         padding: 40px;
         display: flex;
         flex-direction: column;
@@ -39,7 +38,8 @@ const { href, image, imageAlt, category, title } = Astro.props;
 
     .work-card:hover {
         background: var(--primary-opacity);
-        border: 1px solid var(--primary-orange);
+        box-shadow: 0 0 0 1px var(--primary-orange);
+        z-index: 1;
     }
 
     .work-card:hover .work-arrow {
