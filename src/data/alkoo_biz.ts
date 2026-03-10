@@ -14,7 +14,7 @@ export const alkooBizWorks: AlkooBizWorkItem[] = [
     listDescription:
       "顧客が検討したイベントの楽しさが伝わるように。\nパッケージの一環としてグラフィックデザインも行い、イベントの顔となって顧客を支援しています。",
     thumbnail: {
-      src: "/img/alkoo-biz/img_contents_alkoobiz_chura.jpg",
+      src: "/img/event-graphics/event-graphics-001.jpg",
       alt: "イベントグラフィックス",
     },
     href: "/detail/biz/event-graphics",

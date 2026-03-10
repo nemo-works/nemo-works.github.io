@@ -111,6 +111,7 @@ const titleLines = title.split('\n');
     flex-direction: column;
     gap: 40px;
     background: var(--gray-white);
+    border-bottom: 1px solid var(--gray-divider);
   }
 
   .header-block {
@@ -175,6 +176,10 @@ const titleLines = title.split('\n');
   .info-block {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content-header:not(:has(.image-block)) .info-block {
+    margin-bottom: 40px;
   }
 
   .info-item {
