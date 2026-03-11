@@ -58,13 +58,11 @@ import HeroSection from '../components/HeroSection.astro';
                 category="自社サービス運用/ナビゲーションサービス"
                 title="dバリューパス向けコンテンツ"
             />
-            <WorkCard
-                href="#"
-                image="/img/index/Container/containts-06.png"
-                imageAlt="社内デザイン力の底上げ"
-                category="運用・改善"
-                title="社内デザイン力の底上げ"
-            />
+            <div class="work-placeholder">
+                <svg preserveAspectRatio="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="0" x2="100" y2="100" stroke="#e0e0e0" stroke-width="1" vector-effect="non-scaling-stroke"/>
+                </svg>
+            </div>
         </div>
         </div>
     </section>
@@ -108,21 +106,21 @@ import HeroSection from '../components/HeroSection.astro';
                 <div class="profile-detail-content">
                     <div class="hobbies-list">
                         <div class="hobby-item">
-                            <div class="hobby-icon hobby-icon--game"></div>
+                            <img class="hobby-icon" src="/img/index/icon_stadia_controller.svg" alt="ゲーム">
                             <div class="hobby-content">
                                 <p class="hobby-title game">ゲーム</p>
                                 <p class="hobby-description">ラチェット&クランクとポケモンでゲーム好きが始まりました。</p>
                             </div>
                         </div>
                         <div class="hobby-item">
-                            <div class="hobby-icon hobby-icon--photo"></div>
+                            <img class="hobby-icon" src="/img/index/icon_photo_camera.svg" alt="写真">
                             <div class="hobby-content">
                                 <p class="hobby-title photo">写真</p>
                                 <p class="hobby-description">Canon R8をメインに日常のスナップ写真の撮影を楽しんでいます。</p>
                             </div>
                         </div>
                         <div class="hobby-item">
-                            <div class="hobby-icon hobby-icon--running"></div>
+                            <img class="hobby-icon" src="/img/index/icon_directions_run.svg" alt="ランニング">
                             <div class="hobby-content">
                                 <p class="hobby-title running">ランニング</p>
                                 <p class="hobby-description">上司の猛烈な誘いを受けてランニングを始めました。今では自然遊歩道を走るトレイルランニングも楽しんでいます。</p>
@@ -133,7 +131,7 @@ import HeroSection from '../components/HeroSection.astro';
             </div>
 
             <RelatedLinks links={[
-                { href: "#", label: "Web履歴書" },
+                //{ href: "#", label: "Web履歴書" },
                 { href: "https://recruit.navitime.co.jp/interview/detail/interview10", label: "ナビタイムジャパン > 社員インタビュー" },
             ]} />
 
@@ -339,7 +337,6 @@ import HeroSection from '../components/HeroSection.astro';
         height: 48px;
         flex-shrink: 0;
         border-radius: 8px;
-        background: var(--gray-background);
     }
 
     .hobby-content { flex: 1; }
@@ -382,6 +379,20 @@ import HeroSection from '../components/HeroSection.astro';
             padding-left: 80px;
             padding-right: 80px;
         }
+    }
+
+    .work-placeholder {
+        background: var(--gray-white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .work-placeholder svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     @media (max-width: 1024px) {

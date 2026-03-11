@@ -44,7 +44,7 @@ export const alkooWorks: AlkooWorkItem[] = [
     href: "/detail/alkoo/steps-sharing",
     tags: ["UIUX", "機能提案"],
   },
-  {
+  /*   {
     id: "mothly-report",
     listTitle: "月間レポート",
     listDescription:
@@ -55,5 +55,5 @@ export const alkooWorks: AlkooWorkItem[] = [
     },
     href: "/detail/alkoo/monthly-report",
     tags: ["機能検討", "UIUX", "イラスト", "グロース施策"],
-  },
+  }, */
 ];
